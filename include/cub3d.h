@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/03 15:47:43 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/03 16:11:14 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 char		*ft_strdup(const char *s, char c);
 char		*ft_strjoin(char *s1, char const *s2);
 t_infos     infos_init(void);
+void		parsing(char *file);
 
 #endif
