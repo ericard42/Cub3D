@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   tab_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 14:59:05 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/03 15:45:53 by ericard@stu      ###   ########.fr       */
+/*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
+/*   Updated: 2021/02/03 15:23:01 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int     main(int ac, char **av)
+t_infos     infos_init(void)
 {
-    int     fd;
+    t_infos     infos;
 
-    fd = open(av[1], O_RDONLY);
+    infos.resx = 0;
+    infos.resy = 0;
+    infos.f = -1;
+    infos.c = -1;
+    infos.no = NULL;
+    infos.so = NULL;
+    infos.we = NULL;
+    infos.ea = NULL;
+    infos.s = NULL;
+    infos.map = NULL;
+
+    return (infos);
 }

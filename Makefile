@@ -6,11 +6,14 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/02/01 16:32:17 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/02/03 15:43:21 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	cub3d.c \
+			srcs/tab_init.c \
+			srcs/get_next_line.c \
+			srcs/get_next_line_utiles.c \
 
 INCLUDE	=	-I include/
 
