@@ -6,15 +6,15 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/03 15:23:01 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/03 16:57:33 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_infos     infos_init(void)
+t_infos		infos_init(void)
 {
-    t_infos     infos;
+    t_infos		infos;
 
     infos.resx = 0;
     infos.resy = 0;
