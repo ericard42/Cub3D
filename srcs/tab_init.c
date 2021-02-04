@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/03 16:57:33 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/04 16:49:32 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,12 @@ t_infos		infos_init(void)
 
     infos.resx = 0;
     infos.resy = 0;
-    infos.f = -1;
-    infos.c = -1;
+    infos.fr = -1;
+	infos.fg = -1;
+	infos.fb = -1;
+	infos.cr = -1;
+	infos.cg = -1;
+    infos.cb = -1;
     infos.no = NULL;
     infos.so = NULL;
     infos.we = NULL;

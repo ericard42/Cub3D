@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/02/04 16:30:45 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/02/04 16:44:26 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,13 @@ CC		=	clang
 
 CFLAGS	=	-Wall -Werror -Wextra
 
-.c.o:		$(CC) $(CFLAGS) $(INCLUDE)-c $< -o $(<:.c=.o)
+.c.o:		$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:.c=.o)
 			@printf "\e[1A\e[0K"
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) $(INCLUDE) -o $(NAME) $(OBJS)
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
 			$(RM) $(OBJS)

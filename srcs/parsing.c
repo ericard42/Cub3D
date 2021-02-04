@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/04 16:38:54 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/04 16:48:56 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	resolution(t_infos *infos, char **str)
     int	i;
 
     i = 0;
-    if (*str[i] = 'R')
+    if (*str[i] == 'R')
     {
 		i++;
         infos->resx = atoi_res(*str, &i);
@@ -65,26 +65,26 @@ void	couleurs(t_infos *infos, char **str)
 	int	i;
 
     i = 0;
-    if (*str[i] = 'F')
+    if (*str[i] == 'F')
     {
 		i++;
-        infos->fr = atoi_couleurs(*str, &i);
-		infos->fg= atoi_couleurs(*str, &i);
-		infos->fb= atoi_couleurs(*str, &i);
+        infos->fr = atoi_coul(*str, &i);
+		infos->fg= atoi_coul(*str, &i);
+		infos->fb= atoi_coul(*str, &i);
     }
-	if (*str[i] = 'C')
+	if (*str[i] == 'C')
 	{
 		i++;
-        infos->cr = atoi_couleurs(*str, &i);
-		infos->cg= atoi_couleurs(*str, &i);
-		infos->cb= atoi_couleurs(*str, &i);
+        infos->cr = atoi_coul(*str, &i);
+		infos->cg= atoi_coul(*str, &i);
+		infos->cb= atoi_coul(*str, &i);
 	}
 }
 
 void	parsing(char *file)
 {
 	int         fd;
-    char        **str;
+    char        *str;
     int         ret;
     t_infos     infos;
 
