@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/03 16:11:14 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/04 16:30:23 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,12 @@ typedef struct	s_infos
 {
 	int			resx;
 	int			resy;
-	int			f;
-	int			c;
+	int			fr;
+	int			fg;
+	int			fb;
+	int			cr;
+	int			cg;
+	int			cb;
 	char		*no;
 	char		*so;
 	char		*we;

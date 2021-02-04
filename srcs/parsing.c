@@ -6,21 +6,79 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/03 16:09:36 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/04 16:38:54 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	resolution(t_infos infos, char **str)
+int		atoi_res(char *str, int *i)
+{
+	int	nbr;
+
+	nbr = 0;
+	while (str[*i] == ' ' || (str[*i] >= 9 && str[*i] <= 13))
+		*i += 1;
+	if (str[*i] == '-' || str[*i] == '+')
+		exit(0);
+	while (str[*i] >= '0' && str[*i] <= '9')
+	{
+		nbr = 10 * nbr + (str[*i] - '0');
+		*i += 1;
+	}
+	return (nbr);
+}
+
+int		atoi_coul(char *str, int *i)
+{
+	int	nbr;
+
+	nbr = 0;
+	while (str[*i] == ' ' || str[*i] == ','
+			|| (str[*i] >= 9 && str[*i] <= 13))
+		*i += 1;
+	if (str[*i] == '-' || str[*i] == '+')
+		exit(0);
+	while (str[*i] >= '0' && str[*i] <= '9')
+	{
+		nbr = 10 * nbr + (str[*i] - '0');
+		*i += 1;
+	}
+	return (nbr);
+}
+
+void	resolution(t_infos *infos, char **str)
 {
     int	i;
 
     i = 0;
     if (*str[i] = 'R')
     {
-        
+		i++;
+        infos->resx = atoi_res(*str, &i);
+		infos->resy = atoi_res(*str, &i);
     }
+}
+
+void	couleurs(t_infos *infos, char **str)
+{
+	int	i;
+
+    i = 0;
+    if (*str[i] = 'F')
+    {
+		i++;
+        infos->fr = atoi_couleurs(*str, &i);
+		infos->fg= atoi_couleurs(*str, &i);
+		infos->fb= atoi_couleurs(*str, &i);
+    }
+	if (*str[i] = 'C')
+	{
+		i++;
+        infos->cr = atoi_couleurs(*str, &i);
+		infos->cg= atoi_couleurs(*str, &i);
+		infos->cb= atoi_couleurs(*str, &i);
+	}
 }
 
 void	parsing(char *file)
@@ -36,7 +94,8 @@ void	parsing(char *file)
     while (ret == 1)
     {
         ret = get_next_line(fd, &str);
-        resolution(infos, &str);
+        resolution(&infos, &str);
+		couleurs(&infos, &str);
         free(str);
     }
 }

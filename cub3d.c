@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:05 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/03 16:56:12 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/04 16:33:06 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int		main(int ac, char **av)
 {
-	parsing(av[1]);
+	if (ac == 2)
+		parsing(av[1]);
 }
