@@ -6,21 +6,23 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/02/04 16:44:26 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/02/08 16:46:11 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	cub3d.c \
-			srcs/tab_init.c \
-			srcs/get_next_line.c \
-			srcs/get_next_line_utils.c \
-			srcs/parsing.c \
-
-INCLUDE	=	-I include/
+			tab_init.c \
+			get_next_line.c \
+			get_next_line_utils.c \
+			parsing.c \
 
 NAME	=	Cub3D
 
-OBJS	=	$(SRCS:.c=.o)
+OBJ_DIR =	objs
+SRC_DIR =	srcs
+INCLUDE	=	include
+
+OBJ	=	$(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
 RM		=	rm -rf
 
@@ -28,16 +30,22 @@ CC		=	clang
 
 CFLAGS	=	-Wall -Werror -Wextra
 
-.c.o:		$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:.c=.o)
-			@printf "\e[1A\e[0K"
+.c.o:	
+			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+			
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+$(NAME):	$(OBJ)
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
+				@mkdir -p $(OBJ_DIR)
+				$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+				@printf "\e[1A\e[0K"
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJ_DIR)
 
 fclean:		clean
 			$(RM) $(NAME)
