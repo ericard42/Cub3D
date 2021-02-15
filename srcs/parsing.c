@@ -6,79 +6,65 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/08 17:18:32 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/15 14:02:32 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		atoi_res(char *str, int *i)
+int		textlen(char *str)
 {
-	int	nbr;
+	int i;
+	int j;
 
-	nbr = 0;
-	while (str[*i] == ' ' || (str[*i] >= 9 && str[*i] <= 13))
-		*i += 1;
-	if (str[*i] == '-' || str[*i] == '+')
-		exit(0);
-	while (str[*i] >= '0' && str[*i] <= '9')
-	{
-		nbr = 10 * nbr + (str[*i] - '0');
-		*i += 1;
-	}
-	return (nbr);
-}
-
-int		atoi_coul(char *str, int *i)
-{
-	int	nbr;
-
-	nbr = 0;
-	while (str[*i] == ' ' || str[*i] == ','
-			|| (str[*i] >= 9 && str[*i] <= 13))
-		*i += 1;
-	if (str[*i] == '-' || str[*i] == '+')
-		exit(0);
-	while (str[*i] >= '0' && str[*i] <= '9')
-	{
-		nbr = 10 * nbr + (str[*i] - '0');
-		*i += 1;
-	}
-	return (nbr);
-}
-
-void	resolution(t_infos *infos, char **str)
-{
-    int	i;
-
-    i = 0;
-    if (*str[i] == 'R')
-    {
+	i = 0;
+	j = 0;
+	while(str[i] != '.')
 		i++;
-        infos->resx = atoi_res(*str, &i);
-		infos->resy = atoi_res(*str, &i);
-    }
-}
-
-void	couleurs(t_infos *infos, char **str)
-{
-	int	i;
-
-    i = 0;
-    if (*str[i] == 'F')
-    {
-		i++;
-        infos->fr = atoi_coul(*str, &i);
-		infos->fg= atoi_coul(*str, &i);
-		infos->fb= atoi_coul(*str, &i);
-    }
-	if (*str[i] == 'C')
+	while (str[i] != '\0')
 	{
 		i++;
-        infos->cr = atoi_coul(*str, &i);
-		infos->cg= atoi_coul(*str, &i);
-		infos->cb= atoi_coul(*str, &i);
+		j++;
 	}
+	return (j);
+}
+
+void	pars_text(char *str, char **texture, int i)
+{
+	int	j;
+
+	j = 0;
+	if (*texture != NULL)
+		errors();
+	while (str[i] != '.')
+	{
+		if (str[i] != '.' && str[i] != ' ')
+			errors();
+		i++;
+	}
+	if (!(*texture = (char *)(malloc(sizeof(char) * (textlen(str) + 1)))))
+		errors();
+	while(str[i] != '\0')
+	{
+		*texture[j] = str[i];
+		i++;
+		j++;
+	}
+	*texture[j] = '\0';
+}
+
+void	textures(t_infos *infos, char **str)
+{
+	if(*str[0] == 'S' && *str[1] != '0')
+		pars_text(*str, &infos->s, 1);
+	//if(*str[0] == 'N' && *str[1] == 'O')
+	//	pars_text(*str, &infos->no, 2);
+	//if(*str[0] == 'S' && *str[1] == 'O')
+	//	pars_text(*str, &infos->so, 2);
+	//if(*str[0] == 'W' && *str[1] == 'E')
+	//	pars_text(*str, &infos->we, 2);
+	//if(*str[0] == 'E' && *str[1] == 'A')
+	//	pars_text(*str, &infos->ea, 2);
 }
 
 void	parsing(char *file)
@@ -96,6 +82,8 @@ void	parsing(char *file)
         ret = get_next_line(fd, &str);
         resolution(&infos, &str);
 		couleurs(&infos, &str);
+		textures(&infos, &str);
         free(str);
-    }
+	}
+	printf("%s\n%s\n%s\n%s\n%s\n", infos.s, infos.so, infos.no, infos.we, infos.ea);
 }

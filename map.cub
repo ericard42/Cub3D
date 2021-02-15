@@ -1,10 +1,10 @@
 R 1920 1080
-NO ./textures/
-SO ./textures/
-WE ./textures/
-EA ./textures/
+NO ./textures/NO
+SO ./textures/SO
+WE ./textures/WE
+EA ./textures/EA
 
-S ./textures/
+S ./textures/S
 F 40,240,250
 C 240,50,240
 
