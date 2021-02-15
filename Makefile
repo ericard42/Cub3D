@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/02/12 22:23:46 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/02/15 15:11:38 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RM		=	rm -rf
 
 CC		=	clang
 
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra -g #-fsanitize=address
 
 .c.o:	
 			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
