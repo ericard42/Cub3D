@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/15 15:26:06 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/15 15:47:35 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,42 +29,42 @@ int		textlen(char *str)
 	return (j);
 }
 
-void	pars_text(char *str, char **texture, int i)
+char	*pars_text(char *str, int i)
 {
 	int	j;
+	char	*texture;
 
 	j = 0;
-	if (*texture != NULL)
-		errors();
 	while (str[i] != '.')
 	{
 		if (str[i] != '.' && str[i] != ' ')
 			errors();
 		i++;
 	}
-	if (!(*texture = (char*)(malloc(sizeof(char) * (textlen(str) + 1)))))
+	if (!(texture = (char*)(malloc(sizeof(char) * (textlen(str) + 1)))))
 		errors();
 	while(str[i] != '\0')
 	{
-		(*texture)[j] = str[i];
+		texture[j] = str[i];
 		i++;
 		j++;
 	}
-	(*texture)[j] = '\0';
+	texture[j] = '\0';
+	return (texture);
 }
 
 void	textures(t_infos *infos, char *str)
 {
 	if(str[0] == 'S' && str[1] != 'O')
-		pars_text(str, &infos->s, 1);
+		infos->s = pars_text(str, 1);
 	if(str[0] == 'N' && str[1] == 'O')
-		pars_text(str, &infos->no, 2);
+		infos->no = pars_text(str, 2);
 	if(str[0] == 'S' && str[1] == 'O')
-		pars_text(str, &infos->so, 2);
+		infos->so = pars_text(str, 2);
 	if(str[0] == 'W' && str[1] == 'E')
-		pars_text(str, &infos->we, 2);
+		infos->we = pars_text(str, 2);
 	if(str[0] == 'E' && str[1] == 'A')
-		pars_text(str, &infos->ea, 2);
+		infos->ea = pars_text(str, 2);
 }
 
 void	parsing(char *file)
