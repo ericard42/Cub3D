@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tab_init.c                                         :+:      :+:    :+:   */
+/*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/16 14:16:45 by ericard@stu      ###   ########.fr       */
+/*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
+/*   Updated: 2021/02/16 14:28:11 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_infos		infos_init(void)
+int		size_map(t_infos *infos, char *str)
 {
-    t_infos		infos;
+	int	i;
 
-    infos.resx = 0;
-    infos.resy = 0;
-    infos.fr = -1;
-	infos.fg = -1;
-	infos.fb = -1;
-	infos.cr = -1;
-	infos.cg = -1;
-    infos.cb = -1;
-    infos.no = NULL;
-    infos.so = NULL;
-    infos.we = NULL;
-    infos.ea = NULL;
-    infos.s = NULL;
-    infos.map = NULL;
-	infos.lines = 0;
-	infos.columns = 0;
-    return (infos);
+	i = 0;
+	while(str[i] != '1')
+	{
+		if (str[i] == '\0')
+			return (0);
+		i++;
+	}
+	while(str[i] != '\0')
+	{
+		if (str[i] != '1' && str[i] != '0' && str[i] != ' ' && str[i] != '\t'
+			&& str[i] != 'N' && str[i] != 'S' && str[i] != 'E' && str[i] != 'W')
+			return(0);
+		i++;
+	}
+	if (i > infos->columns)
+		infos->columns = i;
+	infos->lines++;
+	return(1);
 }

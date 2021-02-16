@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/15 15:47:35 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/16 14:24:41 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,11 @@ void	parsing(char *file)
     while (ret == 1)
     {
         ret = get_next_line(fd, &str);
-        resolution(&infos, &str);
-		couleurs(&infos, &str);
+        resolution(&infos, str);
+		colors(&infos, str);
 		textures(&infos, str);
+		size_map(&infos, str);
         free(str);
 	}
-	printf("%s\n%s\n%s\n%s\n%s\n", infos.s, infos.so, infos.no, infos.we, infos.ea);
+	printf("%d\n%d\n", infos.lines, infos.columns);
 }

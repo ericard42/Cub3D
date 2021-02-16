@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coul_res.c                                         :+:      :+:    :+:   */
+/*   colors_res.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,26 +14,26 @@
 
 int		atoi_res(char *str, int *i)
 {
-	int	nbr;
+	int	ret;
 
-	nbr = 0;
+	ret = 0;
 	while (str[*i] == ' ' || (str[*i] >= 9 && str[*i] <= 13))
 		*i += 1;
 	if (str[*i] == '-' || str[*i] == '+')
 		errors();
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
-		nbr = 10 * nbr + (str[*i] - '0');
+		ret = 10 * ret + (str[*i] - '0');
 		*i += 1;
 	}
-	return (nbr);
+	return (ret);
 }
 
-int		atoi_coul(char *str, int *i)
+int		atoi_colors(char *str, int *i)
 {
-	int	nbr;
+	int	ret;
 
-	nbr = 0;
+	ret = 0;
 	while (str[*i] == ' ' || str[*i] == ','
 			|| (str[*i] >= 9 && str[*i] <= 13))
 		*i += 1;
@@ -41,44 +41,44 @@ int		atoi_coul(char *str, int *i)
 		errors();
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
-		nbr = 10 * nbr + (str[*i] - '0');
+		ret = 10 * ret + (str[*i] - '0');
 		*i += 1;
 	}
-	if (nbr > 255)
+	if (ret > 255)
 		errors();
-	return (nbr);
+	return (ret);
 }
 
-void	resolution(t_infos *infos, char **str)
+void	resolution(t_infos *infos, char *str)
 {
     int	i;
 
     i = 0;
-    if (*str[i] == 'R')
+    if (str[i] == 'R')
     {
 		i++;
-        infos->resx = atoi_res(*str, &i);
-		infos->resy = atoi_res(*str, &i);
+        infos->resx = atoi_res(str, &i);
+		infos->resy = atoi_res(str, &i);
     }
 }
 
-void	couleurs(t_infos *infos, char **str)
+void	colors(t_infos *infos, char *str)
 {
 	int	i;
 
     i = 0;
-    if (*str[i] == 'F')
+    if (str[i] == 'F')
     {
 		i++;
-        infos->fr = atoi_coul(*str, &i);
-		infos->fg= atoi_coul(*str, &i);
-		infos->fb= atoi_coul(*str, &i);
+        infos->fr = atoi_colors(str, &i);
+		infos->fg= atoi_colors(str, &i);
+		infos->fb= atoi_colors(str, &i);
     }
-	if (*str[i] == 'C')
+	if (str[i] == 'C')
 	{
 		i++;
-        infos->cr = atoi_coul(*str, &i);
-		infos->cg= atoi_coul(*str, &i);
-		infos->cb= atoi_coul(*str, &i);
+        infos->cr = atoi_colors(str, &i);
+		infos->cg= atoi_colors(str, &i);
+		infos->cb= atoi_colors(str, &i);
 	}
 }

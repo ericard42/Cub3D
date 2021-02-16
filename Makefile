@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/02/15 15:31:32 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/02/16 13:30:13 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRCS	=	cub3d.c \
 			get_next_line_utils.c \
 			parsing.c \
 			errors.c \
-			coul_res.c \
+			parsing_colors_res.c \
+			parsing_map.c \
 
 NAME	=	Cub3D
 
