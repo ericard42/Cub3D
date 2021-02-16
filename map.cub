@@ -5,7 +5,7 @@ WE ./textures/WE
 EA ./textures/EA
 
 S ./textures/S
-F 40,240,250
+F 200,240, 0
 C 240,50,240
 
 1111111111111

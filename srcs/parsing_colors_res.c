@@ -20,7 +20,7 @@ int		atoi_res(char *str, int *i)
 	while (str[*i] == ' ' || (str[*i] >= 9 && str[*i] <= 13))
 		*i += 1;
 	if (str[*i] == '-' || str[*i] == '+')
-		errors();
+		errors("Resolution incorrecte");
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
 		ret = 10 * ret + (str[*i] - '0');
@@ -38,14 +38,16 @@ int		atoi_colors(char *str, int *i)
 			|| (str[*i] >= 9 && str[*i] <= 13))
 		*i += 1;
 	if (str[*i] == '-' || str[*i] == '+')
-		errors();
+		errors("Couleurs incorrectes");
+	if (str[*i] == '\0')
+		errors("Couleurs incorrectes");
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
 		ret = 10 * ret + (str[*i] - '0');
 		*i += 1;
 	}
 	if (ret > 255)
-		errors();
+		errors("Couleurs incorrectes");
 	return (ret);
 }
 
@@ -59,6 +61,8 @@ void	resolution(t_infos *infos, char *str)
 		i++;
         infos->resx = atoi_res(str, &i);
 		infos->resy = atoi_res(str, &i);
+		if (str[i] != '\0')
+			errors("Resolution incorrecte");
     }
 }
 
@@ -73,6 +77,8 @@ void	colors(t_infos *infos, char *str)
         infos->fr = atoi_colors(str, &i);
 		infos->fg= atoi_colors(str, &i);
 		infos->fb= atoi_colors(str, &i);
+		if (str[i] != '\0')
+			errors("Couleurs du sol incorrectes");
     }
 	if (str[i] == 'C')
 	{
@@ -80,5 +86,7 @@ void	colors(t_infos *infos, char *str)
         infos->cr = atoi_colors(str, &i);
 		infos->cg= atoi_colors(str, &i);
 		infos->cb= atoi_colors(str, &i);
+		if (str[i] != '\0')
+			errors("Couleurs du plafond incorrectes");
 	}
 }

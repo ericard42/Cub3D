@@ -6,14 +6,14 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:03:24 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/08 17:03:35 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/16 14:52:38 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	errors()
+void	errors(char *message)
 {
-	printf("Error\n");
+	printf("Error\n%s\n", message);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/16 14:25:52 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/16 14:51:45 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char		*ft_strdup(const char *s, char c);
 char		*ft_strjoin(char *s1, char const *s2);
 t_infos     infos_init(void);
 void		parsing(char *file);
-void		errors();
+void		errors(char *message);
 void		resolution(t_infos *infos, char *str);
 void		colors(t_infos *infos, char *str);
 int			size_map(t_infos *infos, char *str);

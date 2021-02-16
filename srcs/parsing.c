@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/16 14:24:41 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/16 14:59:46 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ char	*pars_text(char *str, int i)
 	while (str[i] != '.')
 	{
 		if (str[i] != '.' && str[i] != ' ')
-			errors();
+			errors("Textures incorrectes");
 		i++;
 	}
 	if (!(texture = (char*)(malloc(sizeof(char) * (textlen(str) + 1)))))
-		errors();
+		errors("Soucis de malloc");
 	while(str[i] != '\0')
 	{
 		texture[j] = str[i];

@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/16 14:28:11 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/16 15:03:46 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int		size_map(t_infos *infos, char *str)
 	while(str[i] != '1')
 	{
 		if (str[i] == '\0')
+		{
+			if (infos->lines != 0)
+				break;
 			return (0);
+		}
 		i++;
 	}
 	while(str[i] != '\0')
