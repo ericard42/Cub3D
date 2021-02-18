@@ -6,25 +6,21 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/16 15:03:46 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/18 15:22:34 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		size_map(t_infos *infos, char *str)
+int		verify_map(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while(str[i] != '1')
 	{
-		if (str[i] == '\0')
-		{
-			if (infos->lines != 0)
-				break;
+		if (str[i] == '\0')		
 			return (0);
-		}
 		i++;
 	}
 	while(str[i] != '\0')
@@ -33,6 +29,54 @@ int		size_map(t_infos *infos, char *str)
 			&& str[i] != 'N' && str[i] != 'S' && str[i] != 'E' && str[i] != 'W')
 			return(0);
 		i++;
+	}
+	return (i);
+}
+
+void	map_parse(t_infos *infos, char *file)
+{
+	int fd;
+	int i;
+	int	j;
+	int	ret;
+	char *str;
+
+	ret = 1;
+	j = 0;
+	if(!(infos->map = (char**)malloc(sizeof(char*) * infos->lines)))
+		errors("Probleme de Malloc");
+	fd = open(file, O_RDONLY);
+	while (ret == 1)
+	{
+		ret = get_next_line(fd, &str);
+		if(verify_map(str) != 0)
+		{
+			i = 0;
+			if(!(infos->map[j] = (char*)malloc(sizeof(char) * (infos->columns + 1))))
+				errors("Probleme de Malloc");
+			while (str[i] != '\0')
+			{
+				infos->map[j][i] = str[i];
+				i++;
+			}
+			infos->map[j][i] = '\0';
+		}
+		j++;	
+	}
+	close(fd);
+}
+
+int		size_map(t_infos *infos, char *str)
+{
+	int	i;
+
+	i = verify_map(str);
+	if (i == 0)
+	{
+		if (infos ->lines != 0)
+			errors("Probleme de map");
+		else
+			return(0);
 	}
 	if (i > infos->columns)
 		infos->columns = i;

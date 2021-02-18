@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/16 14:59:46 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/18 15:07:15 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ void	parsing(char *file)
 		size_map(&infos, str);
         free(str);
 	}
-	printf("%d\n%d\n", infos.lines, infos.columns);
+	close(fd);
+	map_parse(&infos, file);
 }
