@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/19 13:27:59 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 13:52:40 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ typedef struct	s_infos
 	char		**map;
 	int			lines;
 	int			columns;
+	int			departx;
+	int			departy;
+	char		depart;
 }				t_infos;
 
 int			get_next_line(int fd, char **line);

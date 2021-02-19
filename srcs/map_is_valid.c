@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:51:41 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/19 13:49:10 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 14:03:14 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	map_is_valid(t_infos infos)
 	int	j;
 
 	i = 0;
+	if (infos.depart == '0')
+		errors("Aucun depart");
 	while (i < infos.lines)
 	{
 		j = 0;

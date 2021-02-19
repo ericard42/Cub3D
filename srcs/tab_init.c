@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/16 14:16:45 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 13:53:24 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ t_infos		infos_init(void)
     infos.map = NULL;
 	infos.lines = 0;
 	infos.columns = 0;
+	infos.depart = '0';
+	infos.departx = 0;
+	infos.departy = 0;
     return (infos);
 }

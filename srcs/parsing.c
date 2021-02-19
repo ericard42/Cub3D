@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/19 13:36:41 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 15:01:23 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*pars_text(char *str, int i)
 		i++;
 	}
 	if (!(texture = (char*)(malloc(sizeof(char) * (textlen(str) + 1)))))
-		errors("Soucis de malloc");
+		errors("Probleme de malloc");
 	while(str[i] != '\0')
 	{
 		texture[j] = str[i];
@@ -56,15 +56,35 @@ char	*pars_text(char *str, int i)
 void	textures(t_infos *infos, char *str)
 {
 	if(str[0] == 'S' && str[1] != 'O')
+	{
+		if (infos->s != NULL)
+			errors("Parametres en double");
 		infos->s = pars_text(str, 1);
+	}
 	if(str[0] == 'N' && str[1] == 'O')
+	{
+		if (infos->no != NULL)
+			errors("Parametres en double");
 		infos->no = pars_text(str, 2);
+	}
 	if(str[0] == 'S' && str[1] == 'O')
+	{
+		if (infos->so != NULL)
+			errors("Parametres en double");
 		infos->so = pars_text(str, 2);
+	}
 	if(str[0] == 'W' && str[1] == 'E')
+	{
+		if (infos->we != NULL)
+			errors("Parametres en double");
 		infos->we = pars_text(str, 2);
+	}
 	if(str[0] == 'E' && str[1] == 'A')
+	{
+		if (infos->ea != NULL)
+			errors("Parametres en double");
 		infos->ea = pars_text(str, 2);
+	}
 }
 
 void	parsing(char *file)
