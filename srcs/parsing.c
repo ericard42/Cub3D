@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/19 15:05:57 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 20:57:56 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*pars_text(char *str, int i)
 	j = 0;
 	while (str[i] != '.')
 	{
-		if (str[i] != '.' && str[i] != ' ')
+		if (str[i] != '.' && str[i] != ' ' && str[i] != '\t')
 			errors("Textures incorrectes");
 		i++;
 	}

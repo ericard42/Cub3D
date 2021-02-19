@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/19 15:41:51 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 21:01:44 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int		verify_map(char *str)
 	i = 0;
 	while(str[i] != '1')
 	{
-		if (str[i] == '\0')		
+		if (str[i] == '\0' || (str[i] != 1 && str[i] != '0' && str[i] != ' '
+			&& str[i] != '\t' && str[i] != 'N' && str[i] != 'S' 
+			&& str[i] != 'E' && str[i] != 'W' && str[i] != '2'))		
 			return (0);
 		i++;
 	}
@@ -59,6 +61,8 @@ void	map_parse(t_infos *infos, char *file)
 			{
 				if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
 				{
+					if (infos->depart != '0')
+						errors("Map incorrecte");
 					infos->departx = i;
 					infos->departy = j;
 					infos->depart = str[i];
