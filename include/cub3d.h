@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/18 14:17:23 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 13:27:59 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void		resolution(t_infos *infos, char *str);
 void		colors(t_infos *infos, char *str);
 int			size_map(t_infos *infos, char *str);
 void		map_parse(t_infos *infos, char *file);
+void		map_is_valid(t_infos infos);
 
 #endif

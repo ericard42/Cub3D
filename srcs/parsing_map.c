@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/18 15:22:34 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 13:35:04 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	map_parse(t_infos *infos, char *file)
 	if(!(infos->map = (char**)malloc(sizeof(char*) * infos->lines)))
 		errors("Probleme de Malloc");
 	fd = open(file, O_RDONLY);
-	while (ret == 1)
+	while (j < infos->lines)
 	{
 		ret = get_next_line(fd, &str);
 		if(verify_map(str) != 0)
@@ -60,8 +60,8 @@ void	map_parse(t_infos *infos, char *file)
 				i++;
 			}
 			infos->map[j][i] = '\0';
-		}
-		j++;	
+			j++;
+		}	
 	}
 	close(fd);
 }
@@ -73,7 +73,7 @@ int		size_map(t_infos *infos, char *str)
 	i = verify_map(str);
 	if (i == 0)
 	{
-		if (infos ->lines != 0)
+		if (infos->lines != 0)
 			errors("Probleme de map");
 		else
 			return(0);

@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/18 15:07:15 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 13:36:41 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		textlen(char *str)
 
 char	*pars_text(char *str, int i)
 {
-	int	j;
+	int		j;
 	char	*texture;
 
 	j = 0;
@@ -88,4 +88,5 @@ void	parsing(char *file)
 	}
 	close(fd);
 	map_parse(&infos, file);
+	map_is_valid(infos);
 }
