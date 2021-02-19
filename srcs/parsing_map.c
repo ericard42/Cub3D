@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/19 14:09:09 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/19 15:41:51 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int		verify_map(char *str)
 	while(str[i] != '\0')
 	{
 		if (str[i] != '1' && str[i] != '0' && str[i] != ' ' && str[i] != '\t'
-			&& str[i] != 'N' && str[i] != 'S' && str[i] != 'E' && str[i] != 'W')
+			&& str[i] != 'N' && str[i] != 'S' && str[i] != 'E' && str[i] != 'W'
+			&& str[i] != '2')
 			return(0);
 		i++;
 	}
