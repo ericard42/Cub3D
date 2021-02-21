@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:05 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/19 16:21:56 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/21 12:16:07 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	vrf_file(char *file)
 	int i;
 
 	i = 0;
+	while(file[i] == '.' && (file[i + 1] == '/' || file[i + 1] == '.'))
+				i++;
 	while (file[i] != '.')
 		{
 			if (file[i] == '\0')
