@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/02/21 12:12:23 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/02/22 13:48:41 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ SRCS	=	cub3d.c \
 			get_next_line.c \
 			get_next_line_utils.c \
 			parsing.c \
-			errors.c \
 			parsing_colors_res.c \
 			parsing_map.c \
 			map_is_valid.c \
 			parsing_textures.c \
-
-NAME	=	Cub3D
+			errors.c \
+			
+NAME	=	cub3D
 
 OBJ_DIR =	objs
 SRC_DIR =	srcs
