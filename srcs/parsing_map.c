@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/22 13:30:50 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/23 14:41:01 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	map_parse(t_infos *infos, char *file)
 	ret = 1;
 	j = 0;
 	if(!(infos->map = (char**)malloc(sizeof(char*) * infos->lines)))
-		errors("Probleme de Malloc");
+		errors("Probleme de Malloc", infos);
 	fd = open(file, O_RDONLY);
 	while (j < infos->lines)
 	{
@@ -56,13 +56,13 @@ void	map_parse(t_infos *infos, char *file)
 		{
 			i = 0;
 			if(!(infos->map[j] = (char*)malloc(sizeof(char) * (infos->columns + 1))))
-				errors("Probleme de Malloc");
+				errors("Probleme de Malloc", infos);
 			while (str[i] != '\0')
 			{
 				if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
 				{
 					if (infos->depart != '0')
-						errors("Map incorrecte");
+						errors("Map incorrecte", infos);
 					infos->departx = i;
 					infos->departy = j;
 					infos->depart = str[i];
@@ -74,7 +74,8 @@ void	map_parse(t_infos *infos, char *file)
 			}
 			infos->map[j][i] = '\0';
 			j++;
-		}	
+		}
+		free(str);	
 	}
 	close(fd);
 }
@@ -87,14 +88,14 @@ int		size_map(t_infos *infos, char *str)
 	if (i == 0)
 	{
 		if (infos->lines != 0)
-			errors("Probleme de map");
+			errors("Probleme de map", infos);
 		else
 			return(0);
 	}
 	if (infos->resx == 0 || infos->resy == 0 || infos->fr == -1
 		|| infos->cr  == -1 || infos->s == NULL || infos->no == NULL
 		|| infos->so == NULL || infos->we == NULL || infos->ea == NULL)
-		errors("Parametres manquants");
+		errors("Parametres manquants", infos);
 	if (i > infos->columns)
 		infos->columns = i;
 	infos->lines++;

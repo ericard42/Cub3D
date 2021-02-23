@@ -6,44 +6,44 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:51:41 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/22 13:30:15 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/23 14:21:43 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	map_is_valid(t_infos infos)
+void	map_is_valid(t_infos *infos)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	if (infos.depart == '0')
-		errors("Aucun depart");
-	while (i < infos.lines)
+	if (infos->depart == '0')
+		errors("Aucun depart", infos);
+	while (i < infos->lines)
 	{
 		j = 0;
-		while(infos.map[i][j] != '\0')
+		while(infos->map[i][j] != '\0')
 		{
-			if ((i == 0 || i == infos.lines - 1) && (infos.map[i][j] != ' '
-				&& infos.map[i][j] != '1' && infos.map[i][j] != '\t'))
-				errors("Map incorrecte");
+			if ((i == 0 || i == infos->lines - 1) && (infos->map[i][j] != ' '
+				&& infos->map[i][j] != '1' && infos->map[i][j] != '\t'))
+				errors("Map incorrecte", infos);
 			else
 			{
-				if (infos.map[i][j] == '0' || infos.map[i][j] == '2')
+				if (infos->map[i][j] == '0' || infos->map[i][j] == '2')
 				{
-					if (infos.map[i][j - 1] != '0' && infos.map[i][j - 1] != '2'
-						&& infos.map[i][j - 1] != '1')
-						errors("Map incorrecte");
-					if (infos.map[i][j + 1] != '0' && infos.map[i][j + 1] != '2'
-						&& infos.map[i][j + 1] != '1')
-						errors("Map incorrecte");
-					if (infos.map [i - 1][j] != '0' && infos.map[i - 1][j] != '2'
-						&& infos.map[i - 1][j] != '1')
-						errors("Map incorrecte");
-					if (infos.map [i + 1][j] != '0' && infos.map[i + 1][j] != '2'
-						&& infos.map[i + 1][j] != '1')
-						errors("Map incorrecte");
+					if (infos->map[i][j - 1] != '0' && infos->map[i][j - 1] != '2'
+						&& infos->map[i][j - 1] != '1')
+						errors("Map incorrecte", infos);
+					if (infos->map[i][j + 1] != '0' && infos->map[i][j + 1] != '2'
+						&& infos->map[i][j + 1] != '1')
+						errors("Map incorrecte", infos);
+					if (infos->map [i - 1][j] != '0' && infos->map[i - 1][j] != '2'
+						&& infos->map[i - 1][j] != '1')
+						errors("Map incorrecte", infos);
+					if (infos->map [i + 1][j] != '0' && infos->map[i + 1][j] != '2'
+						&& infos->map[i + 1][j] != '1')
+						errors("Map incorrecte", infos);
 				}
 			}
 			j++;

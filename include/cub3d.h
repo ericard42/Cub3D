@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/22 13:30:08 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/23 14:26:59 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,17 @@ void		ft_bzero(void *s, size_t n);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 char		*ft_strdup(const char *s, char c);
 char		*ft_strjoin(char *s1, char const *s2);
-t_infos     infos_init(void);
-void		parsing(char *file);
-void		errors(char *message);
+void	    infos_init(t_infos *infos);
+void		parsing(char *file, t_infos *infos);
+void		errors(char *message, t_infos *infos);
 void		resolution(t_infos *infos, char *str);
 void		colors(t_infos *infos, char *str);
 int			size_map(t_infos *infos, char *str);
 void		map_parse(t_infos *infos, char *file);
-void		map_is_valid(t_infos infos);
+void		map_is_valid(t_infos *infos);
 void		textures(t_infos *infos, char *str);
 int			verify_map(char *str);
+void		ft_close(t_infos *infos);
 
 
 #endif

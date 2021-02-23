@@ -6,13 +6,13 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/21 12:53:15 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/23 14:32:12 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		valid_parameter(char *str)
+int		valid_parameter(char *str, t_infos *infos)
 {
 	if (str[0] == 'R' || str[0] == 'F' || str[0] == 'C' || (str[0] == 'S' 
 		&& str[1] == ' ') || (str[0] == 'N' && str[1] == 'O') || (str[0] == 'S'
@@ -22,33 +22,32 @@ int		valid_parameter(char *str)
 	if (verify_map(str) != 0)
 		return (1);
 	else
-		errors("Parametre inexistant");
+		errors("Parametre inexistant", infos);
 	return (0);
 }
 
-void	parsing(char *file)
+void	parsing(char *file, t_infos *infos)
 {
 	int         fd;
     char        *str;
     int         ret;
-    t_infos     infos;
 
     ret = 1;
-    infos = infos_init();
     fd = open(file, O_RDONLY);
 	if (fd == -1)
-		errors("Impossible d'ouvrir le fichier");
+		errors("Impossible d'ouvrir le fichier", infos);
     while (ret == 1)
     {
         ret = get_next_line(fd, &str);
-		valid_parameter(str);
-        resolution(&infos, str);
-		colors(&infos, str);
-		textures(&infos, str);
-		size_map(&infos, str);
+		valid_parameter(str, infos);
+        resolution(infos, str);
+		colors(infos, str);
+		textures(infos, str);
+		size_map(infos, str);
         free(str);
 	}
 	close(fd);
-	map_parse(&infos, file);
+	map_parse(infos, file);
 	map_is_valid(infos);
+	ft_close(infos);
 }

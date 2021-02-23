@@ -6,13 +6,13 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:05 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/22 13:32:30 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/23 14:28:55 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	vrf_file(char *file)
+void	vrf_file(char *file, t_infos *infos)
 {
 	int i;
 
@@ -22,20 +22,32 @@ void	vrf_file(char *file)
 	while (file[i] != '.')
 		{
 			if (file[i] == '\0')
-				errors("Erreur de fichier");
+			{
+				printf("Error\nErreur de fichier\n");
+				exit(0);
+			}
 			i++;
 		}
 	if (file[i + 1] == 'c' && file[i + 2] == 'u' && file[i + 3] == 'b'
 		&& file[i + 4] == '\0')
-		parsing(file);
+		parsing(file, infos);
 	else
-		errors("Erreur de fichier");
+	{
+		printf("Error\nErreur de fichier\n");
+		exit(0);
+	}
 }
 
 int		main(int ac, char **av)
 {
+	t_infos	infos;
+
+	infos_init(&infos);
 	if (ac == 2)
-		vrf_file(av[1]);
+		vrf_file(av[1], &infos);
 	else
-		errors("Erreur de fichier");
+	{
+		printf("Error\nErreur de fichier\n");
+		exit(0);
+	}
 }
