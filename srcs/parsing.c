@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/23 14:32:12 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/23 14:45:42 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int		valid_parameter(char *str, t_infos *infos)
 	if (verify_map(str) != 0)
 		return (1);
 	else
+	{
+		free(str);
 		errors("Parametre inexistant", infos);
+	}
 	return (0);
 }
 

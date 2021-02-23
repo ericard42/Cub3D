@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/23 14:41:01 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/23 14:49:52 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ void	map_parse(t_infos *infos, char *file)
 				if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
 				{
 					if (infos->depart != '0')
+					{
+						free(str);
 						errors("Map incorrecte", infos);
+					}
 					infos->departx = i;
 					infos->departy = j;
 					infos->depart = str[i];
@@ -88,14 +91,20 @@ int		size_map(t_infos *infos, char *str)
 	if (i == 0)
 	{
 		if (infos->lines != 0)
+		{
+			free(str);	
 			errors("Probleme de map", infos);
+		}
 		else
 			return(0);
 	}
 	if (infos->resx == 0 || infos->resy == 0 || infos->fr == -1
 		|| infos->cr  == -1 || infos->s == NULL || infos->no == NULL
 		|| infos->so == NULL || infos->we == NULL || infos->ea == NULL)
+	{
+		free(str);
 		errors("Parametres manquants", infos);
+	}
 	if (i > infos->columns)
 		infos->columns = i;
 	infos->lines++;

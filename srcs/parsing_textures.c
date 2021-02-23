@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 12:11:59 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/23 14:25:13 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/23 15:03:26 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ int		textlen(char *str, int i)
 	return (j);
 }
 
+/*int		verify_text(char *texture)
+{
+	int		fd;
+
+	fd = open(texture, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	return (1);
+}*/
+
 char	*pars_text(char *str, int i, t_infos *infos)
 {
 	int		j;
@@ -38,7 +48,10 @@ char	*pars_text(char *str, int i, t_infos *infos)
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	if (!(texture = (char*)(malloc(sizeof(char) * (len + 1)))))
+	{
+		free(str);
 		errors("Probleme de malloc", infos);
+	}
 	while(str[i] != '\0')
 	{
 		texture[j] = str[i];
@@ -46,6 +59,11 @@ char	*pars_text(char *str, int i, t_infos *infos)
 		j++;
 	}
 	texture[j] = '\0';
+	/*if (verify_text(texture) == 0)
+	{
+		free(str);
+		errors("Impossible d'ouvrir une texture", infos);
+	}*/
 	return (texture);
 }
 
@@ -54,31 +72,46 @@ void	textures(t_infos *infos, char *str)
 	if(str[0] == 'S' && str[1] != 'O')
 	{
 		if (infos->s != NULL)
+		{
+			free(str);
 			errors("Parametres en double", infos);
+		}
 		infos->s = pars_text(str, 1, infos);
 	}
 	if(str[0] == 'N' && str[1] == 'O')
 	{
 		if (infos->no != NULL)
+		{
+			free(str);
 			errors("Parametres en double", infos);
+		}
 		infos->no = pars_text(str, 2, infos);
 	}
 	if(str[0] == 'S' && str[1] == 'O')
 	{
 		if (infos->so != NULL)
+		{
+			free(str);
 			errors("Parametres en double", infos);
+		}
 		infos->so = pars_text(str, 2, infos);
 	}
 	if(str[0] == 'W' && str[1] == 'E')
 	{
 		if (infos->we != NULL)
+		{
+			free(str);
 			errors("Parametres en double", infos);
+		}
 		infos->we = pars_text(str, 2, infos);
 	}
 	if(str[0] == 'E' && str[1] == 'A')
 	{
 		if (infos->ea != NULL)
+		{
+			free(str);
 			errors("Parametres en double", infos);
+		}
 		infos->ea = pars_text(str, 2, infos);
 	}
 }
