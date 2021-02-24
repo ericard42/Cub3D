@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/24 13:43:24 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/24 15:57:53 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "../minilibx-linux/mlx.h"
 
 typedef struct	s_infos
 {

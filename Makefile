@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/02/23 14:12:26 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/02/24 16:03:55 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ NAME	=	cub3D
 OBJ_DIR =	objs
 SRC_DIR =	srcs
 INCLUDE	=	include
+MLX_DIR =	minilibx-linux
 
 OBJ	=	$(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
@@ -43,11 +44,11 @@ CFLAGS	=	-Wall -Werror -Wextra #-g -fsanitize=address
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L $(MLX_DIR) -lmlx -lm -lbsd -lX11 -lXext
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 				@mkdir -p $(OBJ_DIR)
-				$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+				$(CC) $(CFLAGS) -I $(INCLUDE) -I $(MLX_DIR) -c $< -o $@
 				@printf "\e[1A\e[0K"
 
 clean:
