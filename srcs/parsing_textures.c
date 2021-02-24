@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 12:11:59 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/23 15:03:26 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/24 14:15:34 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,31 @@ int		textlen(char *str, int i)
 	return (j);
 }
 
-/*int		verify_text(char *texture)
+int		verify_text(char *texture)
 {
 	int		fd;
+	int		i;
 
-	fd = open(texture, O_RDONLY);
-	if (fd == -1)
+	i = 0;
+	while(texture[i] == '.' && (texture[i + 1] == '/' || texture[i + 1] == '.'))
+				i++;
+	while (texture[i] != '.')
+		{
+			if (texture[i] == '\0')
+				return (0);
+			i++;
+		}
+	if (texture[i + 1] == 'x' && texture[i + 2] == 'p' && texture[i + 3] == 'm'
+		&& texture[i + 4] == '\0')
+	{	
+		fd = open(texture, O_RDONLY);
+		if (fd == -1)
+			return (0);
+	}
+	else
 		return (0);
 	return (1);
-}*/
+}
 
 char	*pars_text(char *str, int i, t_infos *infos)
 {
@@ -59,11 +75,11 @@ char	*pars_text(char *str, int i, t_infos *infos)
 		j++;
 	}
 	texture[j] = '\0';
-	/*if (verify_text(texture) == 0)
+	if (verify_text(texture) == 0)
 	{
 		free(str);
-		errors("Impossible d'ouvrir une texture", infos);
-	}*/
+		errors("Probleme de texture", infos);
+	}
 	return (texture);
 }
 

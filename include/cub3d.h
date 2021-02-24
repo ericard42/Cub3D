@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/23 14:26:59 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/02/24 13:43:24 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ void		map_is_valid(t_infos *infos);
 void		textures(t_infos *infos, char *str);
 int			verify_map(char *str);
 void		ft_close(t_infos *infos);
-
 
 #endif
