@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/02/24 16:03:55 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/03/01 19:05:44 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS	=	cub3d.c \
 			parsing_textures.c \
 			errors.c \
 			close.c \
+			start_mlx.c \
 			
 NAME	=	cub3D
 
@@ -35,7 +36,7 @@ RM		=	rm -rf
 
 CC		=	clang
 
-CFLAGS	=	-Wall -Werror -Wextra #-g -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
 
 .c.o:	
 			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -44,6 +45,7 @@ CFLAGS	=	-Wall -Werror -Wextra #-g -fsanitize=address
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
+			@cd minilibx-linux && make
 			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L $(MLX_DIR) -lmlx -lm -lbsd -lX11 -lXext
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
@@ -55,6 +57,7 @@ clean:
 			$(RM) $(OBJ_DIR)
 
 fclean:		clean
+			@cd minilibx-linux && make clean
 			$(RM) $(NAME)
 
 re:			fclean all

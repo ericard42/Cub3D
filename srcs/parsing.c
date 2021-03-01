@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:03:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/24 16:32:41 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/01 18:48:05 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	parsing(char *file, t_infos *infos)
 	int         fd;
     char        *str;
     int         ret;
-	void		*mlx_ptr;
-	void		*mlx_win;
 
     ret = 1;
     fd = open(file, O_RDONLY);
@@ -54,8 +52,5 @@ void	parsing(char *file, t_infos *infos)
 	close(fd);
 	map_parse(infos, file);
 	map_is_valid(infos);
-	mlx_ptr = mlx_init();
-	mlx_win = mlx_new_window(mlx_ptr, infos->resx, infos->resy, "cub3D");
-	mlx_loop(mlx_ptr);
-	ft_close(infos);
+	mlx_start(infos);
 }

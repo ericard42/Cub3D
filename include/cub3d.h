@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/24 15:57:53 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/01 18:56:38 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include "../minilibx-linux/mlx.h"
+
+typedef struct	s_mlx
+{
+	void		*mlx;
+	void		*win;
+}				t_mlx;
 
 typedef struct	s_infos
 {
@@ -46,6 +52,7 @@ typedef struct	s_infos
 	int			departx;
 	int			departy;
 	char		depart;
+	t_mlx		mlx;
 }				t_infos;
 
 int			get_next_line(int fd, char **line);
@@ -64,6 +71,7 @@ void		map_parse(t_infos *infos, char *file);
 void		map_is_valid(t_infos *infos);
 void		textures(t_infos *infos, char *str);
 int			verify_map(char *str);
-void		ft_close(t_infos *infos);
+int			ft_close(t_infos *infos);
+void		mlx_start(t_infos *infos);
 
 #endif

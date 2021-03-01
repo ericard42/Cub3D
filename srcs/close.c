@@ -6,13 +6,13 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:11:22 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/23 14:38:05 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/01 19:07:39 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_close(t_infos *infos)
+int		ft_close(t_infos *infos)
 {
 	int	i;
 
@@ -36,5 +36,8 @@ void	ft_close(t_infos *infos)
 		}
 	}
 	free(infos->map);
+	if (infos->mlx.win)
+		mlx_destroy_window(infos->mlx.mlx, infos->mlx.win);
 	exit(0);
+	return(1);
 }
