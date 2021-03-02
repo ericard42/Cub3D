@@ -2,15 +2,15 @@ R 800 800
 F 100,100,100
 C 0,0,1
 
-NO                ./code/images/greystone.xpm
+NO                ./textures/north.xpm
 
-SO        ./code/images/mossy.xpm
+SO        ./textures/south.xpm
 
-WE    ./code/images/redbrick.xpm
+WE    ./textures/west.xpm
 
-EA         ./code/images/wood.xpm
+EA         ./textures/east.xpm
 
-S  ./code/images/Monk.xpm
+S  ./textures/eevee.xpm
 
 
 

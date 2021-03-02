@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/23 14:30:02 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/02 12:28:25 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void		infos_init(t_infos *infos)
 {
     infos->resx = 0;
     infos->resy = 0;
-    infos->fr = -1;
-	infos->fg = -1;
-	infos->fb = -1;
-	infos->cr = -1;
-	infos->cg = -1;
-    infos->cb = -1;
+    infos->f.r = -1;
+	infos->f.g = -1;
+	infos->f.b = -1;
+	infos->f.value = -1;
+	infos->c.r = -1;
+	infos->c.g = -1;
+    infos->c.b = -1;
+	infos->c.value = -1;
     infos->no = NULL;
     infos->so = NULL;
     infos->we = NULL;

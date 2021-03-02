@@ -1,36 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_colors_res.c                               :+:      :+:    :+:   */
+/*   parsing_colors.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 14:30:02 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/23 14:47:16 by ericard@stu      ###   ########.fr       */
+/*   Created: 2021/03/02 12:30:08 by ericard@stu       #+#    #+#             */
+/*   Updated: 2021/03/02 12:41:31 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int		atoi_res(char *str, int *i, t_infos *infos)
-{
-	int	ret;
-
-	ret = 0;
-	while (str[*i] == ' ' || (str[*i] >= 9 && str[*i] <= 13))
-		*i += 1;
-	if (str[*i] == '-' || str[*i] == '+')
-	{
-		free(str);
-		errors("Resolution incorrecte", infos);
-	}
-	while (str[*i] >= '0' && str[*i] <= '9')
-	{
-		ret = 10 * ret + (str[*i] - '0');
-		*i += 1;
-	}
-	return (ret);
-}
 
 int		colors_comma(char *str, int *i, t_infos *infos)
 {
@@ -79,29 +59,6 @@ int		atoi_colors(char *str, int *i, t_infos *infos)
 	return (ret);
 }
 
-void	resolution(t_infos *infos, char *str)
-{
-    int	i;
-
-    i = 0;
-    if (str[i] == 'R')
-    {
-		if (infos->resx != 0 && infos->resy != 0)
-		{
-			free(str);
-			errors("Parametres en double", infos);
-		}
-		i++;
-        infos->resx = atoi_res(str, &i, infos);
-		infos->resy = atoi_res(str, &i, infos);
-		if (str[i] != '\0')
-		{
-			free(str);
-			errors("Resolution incorrecte", infos);
-		}
-    }
-}
-
 void	colors(t_infos *infos, char *str)
 {
 	int	i;
@@ -109,40 +66,42 @@ void	colors(t_infos *infos, char *str)
     i = 0;
     if (str[i] == 'F')
     {
-		if (infos->fr != -1)
+		if (infos->f.value != -1)
 		{
 			free(str);
 			errors("Parametres en double", infos);
 		}
 		i++;
-        infos->fr = atoi_colors(str, &i, infos);
+        infos->f.r = atoi_colors(str, &i, infos);
 		colors_comma(str, &i, infos);
-		infos->fg= atoi_colors(str, &i, infos);
+		infos->f.g= atoi_colors(str, &i, infos);
 		colors_comma(str, &i, infos);
-		infos->fb= atoi_colors(str, &i, infos);
+		infos->f.b= atoi_colors(str, &i, infos);
 		if (str[i] != '\0')
 		{
 			free(str);
 			errors("Couleurs du sol incorrectes", infos);
 		}
+		infos->f.value = infos->f.r * 65536 + infos->f.g * 256 + infos->f.b;
     }
 	if (str[i] == 'C')
 	{
-		if (infos->cr != -1)
+		if (infos->c.value != -1)
 		{
 			free(str);
 			errors("Parametres en double", infos);
 		}
 		i++;
-        infos->cr = atoi_colors(str, &i, infos);
+        infos->c.r = atoi_colors(str, &i, infos);
 		colors_comma(str, &i, infos);
-		infos->cg= atoi_colors(str, &i, infos);
+		infos->c.g= atoi_colors(str, &i, infos);
 		colors_comma(str, &i, infos);
-		infos->cb= atoi_colors(str, &i, infos);
+		infos->c.b= atoi_colors(str, &i, infos);
 		if (str[i] != '\0')
 		{
 			free(str);
 			errors("Couleurs du plafond incorrectes", infos);
 		}
+		infos->c.value = infos->c.r * 65536 + infos->c.g * 256 + infos->c.b;
 	}
 }

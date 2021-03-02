@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/01 18:56:38 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/02 12:59:11 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,27 @@ typedef struct	s_mlx
 {
 	void		*mlx;
 	void		*win;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
 }				t_mlx;
+
+typedef struct	s_colors
+{
+	int			r;
+	int			g;
+	int			b;
+	int			value;
+}				t_colors;
 
 typedef struct	s_infos
 {
 	int			resx;
 	int			resy;
-	int			fr;
-	int			fg;
-	int			fb;
-	int			cr;
-	int			cg;
-	int			cb;
+	t_colors	f;
+	t_colors	c;
 	char		*no;
 	char		*so;
 	char		*we;

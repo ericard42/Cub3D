@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/23 14:49:52 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/02 12:39:23 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ int		size_map(t_infos *infos, char *str)
 		else
 			return(0);
 	}
-	if (infos->resx == 0 || infos->resy == 0 || infos->fr == -1
-		|| infos->cr  == -1 || infos->s == NULL || infos->no == NULL
+	if (infos->resx == 0 || infos->resy == 0 || infos->f.value == -1
+		|| infos->c.value  == -1 || infos->s == NULL || infos->no == NULL
 		|| infos->so == NULL || infos->we == NULL || infos->ea == NULL)
 	{
 		free(str);

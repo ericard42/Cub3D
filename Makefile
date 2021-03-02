@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/03/01 19:05:44 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/03/02 12:29:58 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRCS	=	cub3d.c \
 			get_next_line.c \
 			get_next_line_utils.c \
 			parsing.c \
-			parsing_colors_res.c \
+			parsing_res.c \
+			parsing_colors.c \
 			parsing_map.c \
 			map_is_valid.c \
 			parsing_textures.c \
@@ -36,7 +37,7 @@ RM		=	rm -rf
 
 CC		=	clang
 
-CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra #-g -fsanitize=address
 
 .c.o:	
 			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
