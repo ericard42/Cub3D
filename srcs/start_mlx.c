@@ -6,18 +6,39 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:20:56 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/03 12:01:44 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/03 14:11:59 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	my_mlx_pixel_put(t_infos *infos, int x, int y, int color)
+void	recup_textures(t_infos *infos)
 {
-	char *dst;
-
-	dst = infos->mlx.addr + (y * infos->mlx.line_length + x *(infos->mlx.bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	infos->textures[0].img = mlx_xpm_file_to_image(infos->mlx.mlx, infos->no,
+					&infos->textures[0].img_width, &infos->textures[0].img_height);
+	infos->textures[0].addr = mlx_get_data_addr (infos->textures[0].img,
+					&infos->textures[0].bits_per_pixel,
+					&infos->textures[0].line_length, &infos->textures[0].endian);
+	infos->textures[1].img = mlx_xpm_file_to_image(infos->mlx.mlx, infos->so,
+					&infos->textures[1].img_width, &infos->textures[1].img_height);
+	infos->textures[1].addr = mlx_get_data_addr (infos->textures[1].img,
+					&infos->textures[1].bits_per_pixel,
+					&infos->textures[1].line_length, &infos->textures[1].endian);
+	infos->textures[2].img = mlx_xpm_file_to_image(infos->mlx.mlx, infos->we,
+					&infos->textures[2].img_width, &infos->textures[2].img_height);
+	infos->textures[2].addr = mlx_get_data_addr (infos->textures[2].img,
+					&infos->textures[2].bits_per_pixel,
+					&infos->textures[2].line_length, &infos->textures[2].endian);
+	infos->textures[3].img = mlx_xpm_file_to_image(infos->mlx.mlx, infos->ea,
+					&infos->textures[3].img_width, &infos->textures[3].img_height);
+	infos->textures[3].addr = mlx_get_data_addr (infos->textures[3].img,
+					&infos->textures[3].bits_per_pixel,
+					&infos->textures[3].line_length, &infos->textures[3].endian);
+	infos->textures[4].img = mlx_xpm_file_to_image(infos->mlx.mlx, infos->s,
+					&infos->textures[4].img_width, &infos->textures[4].img_height);
+	infos->textures[4].addr = mlx_get_data_addr (infos->textures[4].img,
+					&infos->textures[4].bits_per_pixel,
+					&infos->textures[4].line_length, &infos->textures[4].endian);
 }
 
 int		minimap(t_infos	*infos)
@@ -72,6 +93,7 @@ void	mlx_start(t_infos *infos)
 	mlx_get_screen_size(infos->mlx.mlx, &infos->mlx.screenx, &infos->mlx.screeny);
 	infos->resx = (infos->resx < infos->mlx.screenx) ? infos->resx : infos->mlx.screenx;
 	infos->resy = (infos->resy < infos->mlx.screeny) ? infos->resy : infos->mlx.screeny;
+	recup_textures(infos);
 	infos->mlx.win = mlx_new_window(infos->mlx.mlx, infos->resx, infos->resy,
 					"cub3D");
 	infos->mlx.img = mlx_new_image(infos->mlx.mlx, infos->resx, infos->resy);

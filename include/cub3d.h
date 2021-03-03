@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/03 12:02:01 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/03 13:54:51 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct	s_mlx
 	void		*win;
 	void		*img;
 	char		*addr;
+	int			img_width;
+	int			img_height;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
@@ -71,6 +73,7 @@ typedef struct	s_infos
 	int			departy;
 	char		depart;
 	t_mlx		mlx;
+	t_mlx		textures[5];
 }				t_infos;
 
 int			get_next_line(int fd, char **line);
@@ -93,5 +96,6 @@ int			ft_close(t_infos *infos);
 void		mlx_start(t_infos *infos);
 void		struct_mlx_init(t_infos *infos);
 int			key_press(int keycode, t_infos *infos);
+void		my_mlx_pixel_put(t_infos *infos, int x, int y, int color);
 
 #endif
