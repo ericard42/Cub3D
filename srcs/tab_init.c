@@ -6,13 +6,13 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/02 12:28:25 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/03 11:48:33 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void		infos_init(t_infos *infos)
+void	infos_init(t_infos *infos)
 {
     infos->resx = 0;
     infos->resy = 0;
@@ -34,4 +34,18 @@ void		infos_init(t_infos *infos)
 	infos->columns = 0;
 	infos->depart = '0';
 	infos->departx = 0;
+	infos->departy = 0;
+}
+
+void	struct_mlx_init(t_infos *infos)
+{
+	infos->mlx.mlx = NULL;
+	infos->mlx.win = NULL;
+	infos->mlx.img = NULL;
+	infos->mlx.addr = NULL;
+	infos->mlx.bits_per_pixel = 0;
+	infos->mlx.line_length = 0;
+	infos->mlx.endian = 0;
+	infos->mlx.screenx = 0;
+	infos->mlx.screeny = 0;
 }

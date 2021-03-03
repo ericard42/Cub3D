@@ -6,14 +6,21 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/02 12:59:11 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/03 12:02:01 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 30
+# define BUFFER_SIZE 30
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_LEFT 65363
+# define KEY_RIGHT 65361
+# define KEY_ESC 65307
 # endif
 
 # include <stdlib.h>
@@ -34,6 +41,8 @@ typedef struct	s_mlx
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
+	int			screenx;
+	int			screeny;
 }				t_mlx;
 
 typedef struct	s_colors
@@ -82,5 +91,7 @@ void		textures(t_infos *infos, char *str);
 int			verify_map(char *str);
 int			ft_close(t_infos *infos);
 void		mlx_start(t_infos *infos);
+void		struct_mlx_init(t_infos *infos);
+int			key_press(int keycode, t_infos *infos);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/02 12:39:23 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/03 10:54:34 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ void	map_parse(t_infos *infos, char *file)
 				}
 				else
 					infos->map[j][i] = str[i];
+				i++;
+			}
+			while (i < infos->columns)
+			{
+				infos->map[j][i] = ' ';
 				i++;
 			}
 			infos->map[j][i] = '\0';

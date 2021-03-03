@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/03/02 12:29:58 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/03/03 12:07:36 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS	=	cub3d.c \
 			errors.c \
 			close.c \
 			start_mlx.c \
+			key_hook.c \
 			
 NAME	=	cub3D
 
