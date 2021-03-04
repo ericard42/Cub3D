@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 12:01:27 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/04 21:50:27 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/04 22:08:19 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int		key_press(int keycode, t_infos *infos)
 	if (keycode == KEY_S)
 		key_w_s(infos, 's');
 	if (keycode == KEY_A)
-		if (infos->map[infos->departy][infos->departx - 1] != '1')
-			infos->departx--;
+		key_a_d(infos, 'a');
 	if (keycode == KEY_D)
-		if (infos->map[infos->departy][infos->departx + 1] != '1')
-			infos->departx++;
+		key_a_d(infos, 'd');
 	return (1);
 }
