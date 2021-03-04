@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/03 13:54:51 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/04 21:50:36 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <math.h>
 # include "../minilibx-linux/mlx.h"
 
 typedef struct	s_mlx
@@ -55,6 +56,34 @@ typedef struct	s_colors
 	int			value;
 }				t_colors;
 
+typedef struct	s_ray
+{
+	double		posx;
+	double		posy;
+	double		dirx;
+	double		diry;
+	double		planx;
+	double		plany;
+	double		raydirx;
+	double		raydiry;
+	double		camerax;
+	int			mapx;
+	int			mapy;
+	double		sidedistx;
+	double		sidedisty;
+	double		deltadistx;
+	double		deltadisty;
+	int			stepx;
+	int			stepy;
+	int			hit;
+	int			side;
+	double		perpwalldist;
+	int			lineheight;
+	int			drawstart;
+	int			drawend;
+	int			x;
+}				t_ray;
+
 typedef struct	s_infos
 {
 	int			resx;
@@ -74,6 +103,7 @@ typedef struct	s_infos
 	char		depart;
 	t_mlx		mlx;
 	t_mlx		textures[5];
+	t_ray		ray;
 }				t_infos;
 
 int			get_next_line(int fd, char **line);
@@ -97,5 +127,10 @@ void		mlx_start(t_infos *infos);
 void		struct_mlx_init(t_infos *infos);
 int			key_press(int keycode, t_infos *infos);
 void		my_mlx_pixel_put(t_infos *infos, int x, int y, int color);
+int			raycasting(t_infos *infos);
+void		depart_init(t_infos *infos);
+void		key_left_right(t_infos *infos, char key);
+void		key_a_d(t_infos *infos, char key);
+void		key_w_s(t_infos *infos, char key);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/03/03 14:12:07 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/03/04 21:43:50 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRCS	=	cub3d.c \
 			start_mlx.c \
 			key_hook.c \
 			mlx_utils.c \
+			raycasting.c \
+			move.c \
 			
 NAME	=	cub3D
 
@@ -39,7 +41,7 @@ RM		=	rm -rf
 
 CC		=	clang
 
-CFLAGS	=	-Wall -Werror -Wextra #-g -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
 
 .c.o:	
 			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:20:56 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/03 14:11:59 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/04 20:47:41 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int		minimap(t_infos	*infos)
 void	mlx_start(t_infos *infos)
 {
 	struct_mlx_init(infos);
+	depart_init(infos);
 	infos->mlx.mlx = mlx_init();
 	mlx_get_screen_size(infos->mlx.mlx, &infos->mlx.screenx, &infos->mlx.screeny);
 	infos->resx = (infos->resx < infos->mlx.screenx) ? infos->resx : infos->mlx.screenx;
@@ -99,7 +100,7 @@ void	mlx_start(t_infos *infos)
 	infos->mlx.img = mlx_new_image(infos->mlx.mlx, infos->resx, infos->resy);
 	infos->mlx.addr = mlx_get_data_addr(infos->mlx.img, &infos->mlx.bits_per_pixel, &infos->mlx.line_length, 
 				&infos->mlx.endian);
-	mlx_loop_hook(infos->mlx.mlx, minimap, infos);
+	mlx_loop_hook(infos->mlx.mlx, raycasting, infos);
 	mlx_hook(infos->mlx.win, 2, 1L << 0, key_press, infos);
 	mlx_loop(infos->mlx.mlx);
 }
