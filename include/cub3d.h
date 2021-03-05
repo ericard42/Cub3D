@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/04 21:50:36 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/05 14:43:53 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define KEY_S 115
 # define KEY_A 97
 # define KEY_D 100
-# define KEY_LEFT 65363
-# define KEY_RIGHT 65361
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 # define KEY_ESC 65307
 # endif
 
@@ -55,6 +55,16 @@ typedef struct	s_colors
 	int			b;
 	int			value;
 }				t_colors;
+
+typedef struct	s_texture
+{
+	int			tex;
+	double		wallx;
+	int			texx;
+	int			texy;
+	double		step;
+	double		texpos;
+}				t_texture;
 
 typedef struct	s_ray
 {
@@ -104,6 +114,7 @@ typedef struct	s_infos
 	t_mlx		mlx;
 	t_mlx		textures[5];
 	t_ray		ray;
+	t_texture	tex;
 }				t_infos;
 
 int			get_next_line(int fd, char **line);
@@ -132,5 +143,7 @@ void		depart_init(t_infos *infos);
 void		key_left_right(t_infos *infos, char key);
 void		key_a_d(t_infos *infos, char key);
 void		key_w_s(t_infos *infos, char key);
+int			minimap(t_infos	*infos);
+void		print_columns(t_infos *infos);
 
 #endif

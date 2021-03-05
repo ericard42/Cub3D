@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:27:13 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/04 21:38:48 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/05 15:34:26 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	initial_sidedist(t_infos *infos)
 		else
 		{
 			infos->ray.stepx = 1;
-			infos->ray.sidedistx = (infos->ray.posx + 1 - infos->ray.mapx) * infos->ray.deltadistx;
+			infos->ray.sidedistx = (infos->ray.mapx + 1 - infos->ray.posx) * infos->ray.deltadistx;
 		}
 		if (infos->ray.diry < 0)
 		{
@@ -32,7 +32,7 @@ void	initial_sidedist(t_infos *infos)
 		else
 		{
 			infos->ray.stepy = 1;
-			infos->ray.sidedisty = (infos->ray.posy + 1 - infos->ray.mapy) * infos->ray.deltadisty;
+			infos->ray.sidedisty = (infos->ray.mapy + 1 - infos->ray.posy) * infos->ray.deltadisty;
 		}
 }
 
@@ -70,29 +70,8 @@ void	draw_start_end(t_infos *infos)
 	if (infos->ray.drawstart < 0)
 		infos->ray.drawstart = 0;
 	infos->ray.drawend = infos->ray.lineheight / 2 + infos->resy / 2;
-	if (infos->ray.drawend >= infos->resy)
+	if (infos->ray.drawend >= infos->resy || infos->ray.drawend < 0)
 		infos->ray.drawend = infos->resy - 1;
-}
-
-void	print_columns(t_infos *infos)
-{
-	int i;
-	i = 0;
-	while (i < infos->ray.drawstart)
-	{
-		my_mlx_pixel_put(infos, infos->ray.x, i, infos->c.value);
-		i++;
-	}
-	while (i <= infos->ray.drawend)
-	{
-		my_mlx_pixel_put(infos, infos->ray.x, i, 0xEB1DF5);
-		i++;
-	}
-	while (i < infos->resy)
-	{
-		my_mlx_pixel_put(infos, infos->ray.x, i, infos->f.value);
-		i++;
-	}
 }
 
 int		raycasting(t_infos *infos)
@@ -117,13 +96,13 @@ int		raycasting(t_infos *infos)
 			infos->ray.deltadisty = 1;
 		else
 			infos->ray.deltadisty = sqrt(1 + (infos->ray.raydirx * infos->ray.raydirx) / (infos->ray.raydiry * infos->ray.raydiry));
-		printf("%f, %f\n", infos->ray.deltadistx, infos->ray.deltadisty);
 		initial_sidedist(infos);
 		distance_wall(infos);
 		draw_start_end(infos);
 		print_columns(infos);
 		infos->ray.x++;
 	}
+	//minimap(infos);
 	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.win, infos->mlx.img, 0, 0);
 	return (1);
 }

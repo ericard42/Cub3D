@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:20:56 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/04 20:47:41 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/05 13:26:53 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		minimap(t_infos	*infos)
 				j = 0;
 				while (j < 10)
 				{
-					if (infos->departx == x && infos->departy == y)
+					if ((int)infos->ray.posx == x && (int)infos->ray.posy == y)
 						my_mlx_pixel_put(infos, mapx, mapy, 0xEB1DF5);
 					else if (infos->map[y][x] == ' ' || infos->map[y][x] == '0')
 						my_mlx_pixel_put(infos, mapx, mapy, 0x000000);

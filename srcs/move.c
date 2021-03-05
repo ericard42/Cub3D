@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 21:43:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/04 22:09:09 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/05 14:11:19 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,57 @@ void	key_w_s(t_infos *infos, char key)
 {
 	if (key == 'w')
 	{
-		infos->ray.posx += infos->ray.dirx * 0.1;
-		infos->ray.posy += infos->ray.diry * 0.1;
+		if (infos->map[(int)infos->ray.posy][(int)(infos->ray.posx + (infos->ray.dirx * 0.1))] != '1')
+			infos->ray.posx += infos->ray.dirx * 0.1;
+		if (infos->map[(int)(infos->ray.posy + (infos->ray.diry * 0.1))][(int)infos->ray.posx] != '1')
+			infos->ray.posy += infos->ray.diry * 0.1;
 	}
 	if (key == 's')
 	{
+		if (infos->map[(int)infos->ray.posy][(int)(infos->ray.posx - (infos->ray.dirx * 0.1))] != '1')
 		infos->ray.posx -= infos->ray.dirx * 0.1;
+		if (infos->map[(int)(infos->ray.posy - (infos->ray.diry * 0.1))][(int)infos->ray.posx] != '1')
 		infos->ray.posy -= infos->ray.diry * 0.1;
 	}
 }
 
 void	key_a_d(t_infos *infos, char key)
 {
-	if (key == 'a')
-	{
-		infos->ray.posx += infos->ray.diry * 0.1;
-		infos->ray.posy -= infos->ray.dirx * 0.1;
-	}
 	if (key == 'd')
 	{
-		infos->ray.posx -= infos->ray.dirx * 0.1;
-		infos->ray.posy += infos->ray.diry * 0.1;
+		if (infos->map[(int)infos->ray.posy][(int)(infos->ray.posx - (infos->ray.dirx * 0.1))] != '1')
+		infos->ray.posx -= infos->ray.diry * 0.1;
+		if (infos->map[(int)(infos->ray.posy + (infos->ray.diry * 0.1))][(int)infos->ray.posx] != '1')
+		infos->ray.posy += infos->ray.dirx * 0.1;
+	}
+	if (key == 'a')
+	{
+		if (infos->map[(int)infos->ray.posy][(int)(infos->ray.posx + (infos->ray.dirx * 0.1))] != '1')
+		infos->ray.posx += infos->ray.dirx * 0.1;
+		if (infos->map[(int)(infos->ray.posy - (infos->ray.diry * 0.1))][(int)infos->ray.posx] != '1')
+		infos->ray.posy -= infos->ray.diry * 0.1;
 	}
 }
 
 void	key_left_right(t_infos *infos, char key)
 {
-	if (key == 'l')
-	{
-		infos->ray.posx = infos->ray.posx;
-	}
+	double	olddirx;
+	double	oldplanx;
+
+	olddirx = infos->ray.dirx;
+	oldplanx = infos->ray.planx;
 	if (key == 'r')
 	{
-		infos->ray.posx = infos->ray.posx;
+		infos->ray.dirx = infos->ray.dirx * cos(-0.05) - infos->ray.diry * sin(-0.05);
+		infos->ray.diry = olddirx * sin(-0.05) + infos->ray.diry * cos(-0.05);
+		infos->ray.planx = infos->ray.planx * cos(-0.05) - infos->ray.plany * sin(-0.05);
+		infos->ray.plany = oldplanx * sin(-0.05) + infos->ray.plany * sin(-0.05);
+	}
+	if (key == 'l')
+	{
+		infos->ray.dirx = infos->ray.dirx * cos(0.05) - infos->ray.diry * sin(0.05);
+		infos->ray.diry = olddirx * sin(0.05) + infos->ray.diry * cos(0.05);
+		infos->ray.planx = infos->ray.planx * cos(0.05) - infos->ray.plany * sin(0.05);
+		infos->ray.plany = oldplanx * sin(0.05) + infos->ray.plany * sin(0.05);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/04 19:14:56 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/05 13:51:05 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,32 @@ void	depart_init(t_infos *infos)
 	{
 		infos->ray.dirx = -1;
 		infos->ray.diry = 0;
-		infos->ray.planx = 0.66;
-		infos->ray.plany = 0;
+		infos->ray.planx = 0;
+		infos->ray.plany = 0.66;
 	}
 	if (infos->depart == 'S')
 	{
 		infos->ray.dirx = 1;
 		infos->ray.diry = 0;
-		infos->ray.planx = -0.66;
-		infos->ray.plany = 0;
+		infos->ray.planx = 0;
+		infos->ray.plany = -0.66;
 	}
 	if (infos->depart == 'E')
 	{
 		infos->ray.dirx = 0;
 		infos->ray.diry = 1;
-		infos->ray.planx = 0;
-		infos->ray.plany = 0.66;
+		infos->ray.planx = 0.66;
+		infos->ray.plany = 0;
 	}
 	if (infos->depart == 'W')
 	{
 		infos->ray.dirx = 0;
 		infos->ray.diry = -1;
-		infos->ray.planx = 0;
-		infos->ray.plany = -0.66;
+		infos->ray.planx = -0.66;
+		infos->ray.plany = 0;
 	}
-	infos->ray.posx = infos->departx;
-	infos->ray.posy = infos->departy;
+	infos->ray.posx = (double)infos->departx;
+	infos->ray.posy = (double)infos->departy;
 }
 
 void	infos_init(t_infos *infos)
