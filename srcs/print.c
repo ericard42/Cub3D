@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 14:22:04 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/05 15:47:39 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/09 08:29:05 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ void	which_texture(t_infos *infos)
 void	print_texture(t_infos *infos, int i)
 {
 	which_texture(infos);
-	infos->tex.step = 1 * infos->textures[infos->tex.tex].img_height / infos->ray.lineheight;
-	infos->tex.texpos = (infos->ray.drawstart - infos->resy / 2 + infos->ray.lineheight / 2) * infos->tex.step;
+	i = infos->ray.drawstart;
+	infos->tex.texx = (int)(infos->tex.wallx * (double)infos->textures[infos->tex.tex]. img_width);
 	if (infos->ray.side == 0 && infos->ray.raydirx > 0)
 		infos->tex.texx = infos->textures[infos->tex.tex].img_width - infos->tex.texx - 1;
 	if (infos->ray.side == 1 && infos->ray.raydirx < 0)
 		infos->tex.texx = infos->textures[infos->tex.tex].img_width - infos->tex.texx - 1;
+	infos->tex.texpos = (infos->ray.drawstart - infos->resy / 2 + infos->ray.lineheight / 2) * infos->tex.step;
+	infos->tex.step = 1 * infos->textures[0].img_height / infos->ray.lineheight;
 	infos->tex.texpos = (infos->ray.drawstart - infos->resy / 2 + infos->ray.lineheight / 2) * infos->tex.step;
 	while (i <= infos->ray.drawend)
 	{
@@ -63,7 +65,14 @@ void	print_columns(t_infos *infos)
 	}
 	if (i <= infos->ray.drawend)
 		print_texture(infos, i);
-	i = j;
+	/*while (i <= infos->ray.drawend)
+	{
+		if (infos->ray.side == 1)
+			my_mlx_pixel_put(infos, infos->ray.x, i, 0x848274);
+		else
+			my_mlx_pixel_put(infos, infos->ray.x, i, 0x728394);
+		i++;
+	}*/
 	while (i < infos->resy)
 	{
 		my_mlx_pixel_put(infos, infos->ray.x, i, infos->f.value);

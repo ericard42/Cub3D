@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 21:43:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/05 14:11:19 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/08 16:16:07 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,16 @@ void	key_left_right(t_infos *infos, char key)
 	oldplanx = infos->ray.planx;
 	if (key == 'r')
 	{
-		infos->ray.dirx = infos->ray.dirx * cos(-0.05) - infos->ray.diry * sin(-0.05);
-		infos->ray.diry = olddirx * sin(-0.05) + infos->ray.diry * cos(-0.05);
-		infos->ray.planx = infos->ray.planx * cos(-0.05) - infos->ray.plany * sin(-0.05);
-		infos->ray.plany = oldplanx * sin(-0.05) + infos->ray.plany * sin(-0.05);
+		infos->ray.dirx = infos->ray.dirx * cos(-0.05 / 2) - infos->ray.diry * sin(-0.05 / 2);
+		infos->ray.diry = olddirx * sin(-0.05 / 2) + infos->ray.diry * cos(-0.05 / 2);
+		infos->ray.planx = infos->ray.planx * cos(-0.05 / 2) - infos->ray.plany * sin(-0.05 / 2);
+		infos->ray.plany = oldplanx * sin(-0.05 / 2) + infos->ray.plany * sin(-0.05 / 2);
 	}
 	if (key == 'l')
 	{
-		infos->ray.dirx = infos->ray.dirx * cos(0.05) - infos->ray.diry * sin(0.05);
-		infos->ray.diry = olddirx * sin(0.05) + infos->ray.diry * cos(0.05);
-		infos->ray.planx = infos->ray.planx * cos(0.05) - infos->ray.plany * sin(0.05);
-		infos->ray.plany = oldplanx * sin(0.05) + infos->ray.plany * sin(0.05);
+		infos->ray.dirx = infos->ray.dirx * cos(0.05 / 2) - infos->ray.diry * sin(0.05 / 2);
+		infos->ray.diry = olddirx * sin(0.05 / 2) + infos->ray.diry * cos(0.05 / 2);
+		infos->ray.planx = infos->ray.planx * cos(0.05 / 2) - infos->ray.plany * sin(0.05 / 2);
+		infos->ray.plany = oldplanx * sin(0.05 / 2) + infos->ray.plany * sin(0.05 / 2);
 	}
 }
