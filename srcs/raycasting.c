@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:27:13 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/11 14:22:17 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/12 16:33:05 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	initial_sidedist(t_infos *infos)
 {
-	if (infos->ray.dirx < 0)
+	if (infos->ray.raydirx < 0)
 		{
 			infos->ray.stepx = -1;
 			infos->ray.sidedistx = (infos->ray.posx - infos->ray.mapx) * infos->ray.deltadistx;
@@ -24,7 +24,7 @@ void	initial_sidedist(t_infos *infos)
 			infos->ray.stepx = 1;
 			infos->ray.sidedistx = (infos->ray.mapx + 1.0 - infos->ray.posx) * infos->ray.deltadistx;
 		}
-		if (infos->ray.diry < 0)
+		if (infos->ray.raydiry < 0)
 		{
 			infos->ray.stepy = -1;
 			infos->ray.sidedisty = (infos->ray.posy - infos->ray.mapy) * infos->ray.deltadisty;
@@ -53,13 +53,13 @@ void	distance_wall(t_infos *infos)
 			infos->ray.mapy += infos->ray.stepy;
 			infos->ray.side = 1;
 		}
-		if (infos->map[infos->ray.mapy][infos->ray.mapx] == '1')
+		if (infos->map[infos->ray.mapx][infos->ray.mapy] == '1')
 			infos->ray.hit = 1;
 	}
 	if (infos->ray.side == 0)
-		infos->ray.perpwalldist = (infos->ray.mapx - infos->ray.posx + (1 - infos->ray.stepx) / 2) / infos->ray.raydirx;
+		infos->ray.perpwalldist = ((double)infos->ray.mapx - infos->ray.posx + (1 - (double)infos->ray.stepx) / 2) / infos->ray.raydirx;
 	else
-		infos->ray.perpwalldist = (infos->ray.mapy - infos->ray.posy + (1 - infos->ray.stepy) / 2) / infos->ray.raydiry;
+		infos->ray.perpwalldist = ((double)infos->ray.mapy - infos->ray.posy + (1 - (double)infos->ray.stepy) / 2) / infos->ray.raydiry;
 }
 
 void	draw_start_end(t_infos *infos)
@@ -78,6 +78,7 @@ int		raycasting(t_infos *infos)
 	infos->ray.x = 0;
 	while (infos->ray.x < infos->resx)
 	{
+		infos->ray.perpwalldist = 0;
 		infos->ray.camerax = 2 * infos->ray.x / (double)infos->resx - 1;
 		infos->ray.raydirx = infos->ray.dirx + infos->ray.planx * infos->ray.camerax;
 		infos->ray.raydiry = infos->ray.diry + infos->ray.plany * infos->ray.camerax;
@@ -101,7 +102,7 @@ int		raycasting(t_infos *infos)
 		print_columns(infos);
 		infos->ray.x++;
 	}
-	//minimap(infos);
+	minimap(infos);
 	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.win, infos->mlx.img, 0, 0);
 	return (1);
 }

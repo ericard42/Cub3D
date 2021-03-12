@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:29:54 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/05 13:12:15 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/12 16:00:38 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	map_parse(t_infos *infos, char *file)
 						free(str);
 						errors("Map incorrecte", infos);
 					}
-					infos->departx = i;
-					infos->departy = j;
+					infos->departx = j;
+					infos->departy = i;
 					infos->depart = str[i];
 					infos->map[j][i] = '0';
 				}

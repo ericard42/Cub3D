@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:20:56 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/05 13:26:53 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/12 16:07:46 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,36 +51,36 @@ int		minimap(t_infos	*infos)
 	int		y;
 
 	mapy = 0;
-	y = 0;
-	while (y < infos->lines)
+	x = 0;
+	while (x < infos->lines)
 	{
 		i = 0;
 		while (i < 10)
 		{
-			x = 0;
+			y = 0;
 			mapx = 0;
-			while (x < infos->columns)
+			while (y < infos->columns)
 			{
 				j = 0;
 				while (j < 10)
 				{
 					if ((int)infos->ray.posx == x && (int)infos->ray.posy == y)
 						my_mlx_pixel_put(infos, mapx, mapy, 0xEB1DF5);
-					else if (infos->map[y][x] == ' ' || infos->map[y][x] == '0')
+					else if (infos->map[x][y] == ' ' || infos->map[x][y] == '0')
 						my_mlx_pixel_put(infos, mapx, mapy, 0x000000);
-					else if (infos->map[y][x] == '1')
+					else if (infos->map[x][y] == '1')
 						my_mlx_pixel_put(infos, mapx, mapy, 0xFFFFFF);
-					else if (infos->map[y][x] == '2')
+					else if (infos->map[x][y] == '2')
 						my_mlx_pixel_put(infos, mapx, mapy, 0x1CD9EC);
 					j++;
 					mapx++;
 				}
-				x++;
+				y++;
 			}
 			i++;
 			mapy++;
 		}
-		y++;
+		x++;
 	}
 	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.win, infos->mlx.img, 0, 0);
 	return (1);

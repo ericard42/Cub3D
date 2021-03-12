@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 21:43:18 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/11 16:59:03 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/12 16:06:02 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	key_w_s(t_infos *infos, char key)
 {
 	if (key == 'w')
 	{
-		if (infos->map[(int)infos->ray.posy][(int)(infos->ray.posx + infos->ray.dirx * 0.1)] != '1')
+		if (infos->map[(int)(infos->ray.posx + infos->ray.dirx * 0.1)][(int)infos->ray.posy] != '1')
 			infos->ray.posx += infos->ray.dirx * 0.1;
-		if (infos->map[(int)(infos->ray.posy + infos->ray.diry * 0.1)][(int)infos->ray.posx] != '1')
+		if (infos->map[(int)infos->ray.posx][(int)(infos->ray.posy + infos->ray.diry * 0.1)] != '1')
 			infos->ray.posy += infos->ray.diry * 0.1;
 	}
 	if (key == 's')
 	{
-		if (infos->map[(int)infos->ray.posy][(int)(infos->ray.posx - infos->ray.dirx * 0.1)] != '1')
+		if (infos->map[(int)(infos->ray.posx - infos->ray.dirx * 0.1)][(int)infos->ray.posy] != '1')
 		infos->ray.posx -= infos->ray.dirx * 0.1;
-		if (infos->map[(int)(infos->ray.posy - infos->ray.diry * 0.1)][(int)infos->ray.posx] != '1')
+		if (infos->map[(int)infos->ray.posx][(int)(infos->ray.posy - infos->ray.diry * 0.1)] != '1')
 		infos->ray.posy -= infos->ray.diry * 0.1;
 	}
 }
@@ -34,16 +34,16 @@ void	key_a_d(t_infos *infos, char key)
 {
 	if (key == 'd')
 	{
-		if (infos->map[(int)infos->ray.posy][(int)(infos->ray.posx - infos->ray.diry * 0.1)] != '1')
+		if (infos->map[(int)(infos->ray.posx - infos->ray.diry * 0.1)][(int)infos->ray.posy] != '1')
 		infos->ray.posx += infos->ray.diry * 0.1;
-		if (infos->map[(int)(infos->ray.posy + infos->ray.dirx * 0.1)][(int)infos->ray.posx] != '1')
+		if (infos->map[(int)infos->ray.posx][(int)(infos->ray.posy + infos->ray.dirx * 0.1)] != '1')
 		infos->ray.posy -= infos->ray.dirx * 0.1;
 	}
 	if (key == 'a')
 	{
-		if (infos->map[(int)infos->ray.posy][(int)(infos->ray.posx + infos->ray.diry * 0.1)] != '1')
+		if (infos->map[(int)(infos->ray.posx + infos->ray.diry * 0.1)][(int)infos->ray.posy] != '1')
 		infos->ray.posx -= infos->ray.diry * 0.1;
-		if (infos->map[(int)(infos->ray.posy - infos->ray.dirx * 0.1)][(int)infos->ray.posx] != '1')
+		if (infos->map[(int)infos->ray.posx][(int)(infos->ray.posy - infos->ray.dirx * 0.1)] != '1')
 		infos->ray.posy += infos->ray.dirx * 0.1;
 	}
 }
