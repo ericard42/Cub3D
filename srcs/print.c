@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 14:22:04 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/12 16:45:53 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/16 15:19:32 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	which_texture(t_infos *infos)
 		infos->tex.tex = 0;
 	if (infos->ray.side == 0 && infos->ray.raydirx >= 0)
 		infos->tex.tex = 1;
-	if (infos->ray.side == 1 && infos->ray.raydirx < 0)
+	if (infos->ray.side == 1 && infos->ray.raydiry < 0)
 		infos->tex.tex = 2;
-	if (infos->ray.side == 1 && infos->ray.raydirx >= 0)
+	if (infos->ray.side == 1 && infos->ray.raydiry >= 0)
 		infos->tex.tex = 3;
 	if (infos->ray.side == 1)
 		infos->tex.wallx = infos->ray.posy + infos->ray.perpwalldist * infos->ray.raydiry;
@@ -32,7 +32,6 @@ void	which_texture(t_infos *infos)
 void	print_texture(t_infos *infos, int i)
 {
 	which_texture(infos);
-	i = infos->ray.drawstart;
 	infos->tex.texx = (int)(infos->tex.wallx * (double)infos->textures[infos->tex.tex]. img_width);
 	if (infos->ray.side == 0 && infos->ray.raydirx > 0)
 		infos->tex.texx = infos->textures[infos->tex.tex].img_width - infos->tex.texx - 1;
@@ -60,20 +59,20 @@ void	print_columns(t_infos *infos)
 		my_mlx_pixel_put(infos, infos->ray.x, i, infos->c.value);
 		i++;
 	}
-	/*if (i <= infos->ray.drawend)
-		print_texture(infos, i);*/
-	while (i <= infos->ray.drawend)
+	if (i <= infos->ray.drawend)
+		print_texture(infos, i);
+	/*while (i <= infos->ray.drawend)
 	{
 		if (infos->ray.side == 0 && infos->ray.raydirx < 0)
 			my_mlx_pixel_put(infos, infos->ray.x, i, 0x848274);
 		if (infos->ray.side == 0 && infos->ray.raydirx >= 0)
 			my_mlx_pixel_put(infos, infos->ray.x, i, 0x728394);
-		if (infos->ray.side == 1 && infos->ray.raydirx < 0)
+		if (infos->ray.side == 1 && infos->ray.raydiry < 0)
 			my_mlx_pixel_put(infos, infos->ray.x, i, 0x202973);
-		if (infos->ray.side == 1 && infos->ray.raydirx >= 0)
+		if (infos->ray.side == 1 && infos->ray.raydiry >= 0)
 			my_mlx_pixel_put(infos, infos->ray.x, i, 0x293847);
 		i++;
-	}
+	}*/
 	while (i < infos->resy)
 	{
 		my_mlx_pixel_put(infos, infos->ray.x, i, infos->f.value);
