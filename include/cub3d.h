@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/05 14:43:53 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/17 14:54:44 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct	s_mlx
 	void		*mlx;
 	void		*win;
 	void		*img;
-	char		*addr;
+	int			*addr;
 	int			img_width;
 	int			img_height;
 	int			bits_per_pixel;
