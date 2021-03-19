@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:27:13 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/16 15:19:51 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/19 15:38:55 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	distance_wall(t_infos *infos)
 			infos->ray.hit = 1;
 	}
 	if (infos->ray.side == 0)
-		infos->ray.perpwalldist = ((double)infos->ray.mapx - infos->ray.posx + (1 - (double)infos->ray.stepx) / 2) / infos->ray.raydirx;
+		infos->ray.perpwalldist = (infos->ray.mapx - infos->ray.posx + (1 - infos->ray.stepx) / 2) / infos->ray.raydirx;
 	else
-		infos->ray.perpwalldist = ((double)infos->ray.mapy - infos->ray.posy + (1 - (double)infos->ray.stepy) / 2) / infos->ray.raydiry;
+		infos->ray.perpwalldist = (infos->ray.mapy - infos->ray.posy + (1 - infos->ray.stepy) / 2) / infos->ray.raydiry;
 }
 
 void	draw_start_end(t_infos *infos)

@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 14:22:04 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/18 16:50:28 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/19 15:50:02 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	which_texture(t_infos *infos)
 
 void	print_texture(t_infos *infos, int i)
 {
-	int color;
+	//int color;
 
-	color = 0;
+	//color = 0;
 	which_texture(infos);
 	if (infos->ray.side == 0)
 		infos->tex.wallx = infos->ray.posy + infos->ray.perpwalldist * infos->ray.raydiry;
 	else
 		infos->tex.wallx = infos->ray.posx + infos->ray.perpwalldist * infos->ray.raydirx;
-	infos->tex.wallx -= floor((infos->tex.wallx));
+	infos->tex.wallx -= floor(infos->tex.wallx);
 	infos->tex.texx = (int)(infos->tex.wallx * (double)(infos->textures[infos->tex.tex].img_width));
 	if (infos->ray.side == 0 && infos->ray.raydirx > 0)
 		infos->tex.texx = infos->textures[infos->tex.tex].img_width - infos->tex.texx - 1;
@@ -47,9 +47,9 @@ void	print_texture(t_infos *infos, int i)
 	{
 		infos->tex.texy = (int)infos->tex.texpos & (infos->textures[infos->tex.tex].img_height - 1);
 		infos->tex.texpos += infos->tex.step;
-		color = infos->textures[infos->tex.tex].addr[infos->textures[infos->tex.tex].line_length / 4 * infos->tex.texy + infos->tex.texx];
-		my_mlx_pixel_put(infos, infos->ray.x, i, color);
-		//my_mlx_pixel_put(infos, infos->ray.x, i, infos->textures[infos->tex.tex].addr[infos->tex.texy * infos->textures[infos->tex.tex].line_length / 4 + infos->tex.texx]);
+		//color = infos->textures[infos->tex.tex].addr[infos->textures[infos->tex.tex].img_height * infos->tex.texy + infos->tex.texx];
+		//my_mlx_pixel_put(infos, infos->ray.x, i, color);
+		my_mlx_pixel_put(infos, infos->ray.x, i, infos->textures[infos->tex.tex].addr[infos->tex.texy * infos->textures[infos->tex.tex].img_height + infos->tex.texx]);
 		//infos->mlx.addr[i *infos->mlx.line_length / 4 + infos->ray.x] = infos->textures[infos->tex.tex].addr[infos->tex.texy * infos->textures[infos->tex.tex].line_length / 4 + infos->tex.texx];
 		i++;
 	}
