@@ -1,11 +1,11 @@
 R 900 900
-NO ./textures/test.xpm
+NO ./textures/Biblio.xpm
 
-SO ./textures/mossy.xpm
+SO ./textures/Fenetre.xpm
 
-WE ./textures/redbrick.xpm
+WE ./textures/Pendule.xpm
 
-EA ./textures/wood.xpm
+EA ./textures/Tele.xpm
 
 S ./textures/eevee.xpm
 
