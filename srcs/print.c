@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 14:22:04 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/19 15:50:02 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/22 11:52:12 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	which_texture(t_infos *infos)
 {
 	if (infos->ray.side == 0 && infos->ray.raydirx < 0)
-		infos->tex.tex = 4;
+		infos->tex.tex = 0;
 	if (infos->ray.side == 0 && infos->ray.raydirx >= 0)
-		infos->tex.tex = 4;
+		infos->tex.tex = 1;
 	if (infos->ray.side == 1 && infos->ray.raydiry < 0)
-		infos->tex.tex = 4;
+		infos->tex.tex = 2;
 	if (infos->ray.side == 1 && infos->ray.raydiry >= 0)
-		infos->tex.tex = 4;
+		infos->tex.tex = 3;
 }
 
 void	print_texture(t_infos *infos, int i)
