@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/17 14:54:44 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/24 14:43:18 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,34 @@ typedef struct	s_mlx
 	int			screenx;
 	int			screeny;
 }				t_mlx;
+
+typedef struct	s_sprite
+{
+	double		*zbuffer;
+	int			nbsprites;
+	int			*order;
+	double		*spritedist;
+	double		spritex;
+	double		spritey;
+	double		invdet;
+	double		transformx;
+	double		transformy;
+	int			spritescreenx;
+	int			spriteheight;
+	int			drawstarty;
+	int			drawendy;
+	int			spritewidth;
+	int			drawstartx;
+	int			drawendx;
+	int			stripe;
+	int			texx;
+}				t_sprite;
+
+typedef struct	s_spritepos
+{
+	double		x;
+	double		y;
+}				t_spritepos;
 
 typedef struct	s_colors
 {
@@ -115,6 +143,8 @@ typedef struct	s_infos
 	t_mlx		textures[5];
 	t_ray		ray;
 	t_texture	tex;
+	t_sprite	sprite;
+	t_spritepos	*spos;
 }				t_infos;
 
 int			get_next_line(int fd, char **line);
@@ -145,5 +175,7 @@ void		key_a_d(t_infos *infos, char key);
 void		key_w_s(t_infos *infos, char key);
 int			minimap(t_infos	*infos);
 void		print_columns(t_infos *infos);
+void		sprite(t_infos *infos);
+void		init_sprite(t_infos *infos);
 
 #endif

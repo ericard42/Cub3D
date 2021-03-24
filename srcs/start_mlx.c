@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 18:20:56 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/17 14:55:10 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/24 14:38:36 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,13 @@ void	mlx_start(t_infos *infos)
 {
 	struct_mlx_init(infos);
 	depart_init(infos);
+	init_sprite(infos);
 	infos->mlx.mlx = mlx_init();
 	mlx_get_screen_size(infos->mlx.mlx, &infos->mlx.screenx, &infos->mlx.screeny);
 	infos->resx = (infos->resx < infos->mlx.screenx) ? infos->resx : infos->mlx.screenx;
 	infos->resy = (infos->resy < infos->mlx.screeny) ? infos->resy : infos->mlx.screeny;
+	if (!(infos->sprite.zbuffer = (double *)malloc(sizeof(double) * infos->resx)))
+		errors("Soucis de malloc", infos);
 	recup_textures(infos);
 	infos->mlx.win = mlx_new_window(infos->mlx.mlx, infos->resx, infos->resy,
 					"cub3D");

@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/11 14:20:53 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/24 15:29:48 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	depart_init(t_infos *infos)
 		infos->ray.planx = -0.66;
 		infos->ray.plany = 0;
 	}
-	infos->ray.posx = (double)infos->departx;
-	infos->ray.posy = (double)infos->departy;
+	infos->ray.posx = (double)infos->departx + 0.5;
+	infos->ray.posy = (double)infos->departy + 0.5;
 }
 
 void	infos_init(t_infos *infos)
@@ -82,4 +82,36 @@ void	struct_mlx_init(t_infos *infos)
 	infos->mlx.endian = 0;
 	infos->mlx.screenx = 0;
 	infos->mlx.screeny = 0;
+}
+
+void	init_sprite(t_infos *infos)
+{
+	int	i;
+	int j;
+	int s;
+
+	i = 0;
+	j = 0;
+	s = 0;
+	if (!(infos->spos = (t_spritepos *)malloc(sizeof(t_spritepos) * infos->sprite.nbsprites)))
+		errors("Probleme de malloc", infos);
+	if (!(infos->sprite.order = (int *)malloc(sizeof(int) * infos->sprite.nbsprites)))
+		errors("Probleme de malloc", infos);
+	if (!(infos->sprite.spritedist = (double *)malloc(sizeof(double) * infos->sprite.nbsprites)))
+		errors("Probleme de malloc", infos);
+	while (i < infos->lines)
+	{
+		j = 0;
+		while (j < infos->columns)
+		{
+			if (infos->map[i][j] == '2')
+			{
+				infos->spos[s].x = (double)i + 0.5;
+				infos->spos[s].y = (double)j + 0.5;
+				s++;
+			}
+			j++;
+		}
+		i++;
+	}
 }

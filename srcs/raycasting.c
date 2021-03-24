@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:27:13 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/19 15:38:55 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/24 14:22:06 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,11 @@ int		raycasting(t_infos *infos)
 		distance_wall(infos);
 		draw_start_end(infos);
 		print_columns(infos);
+		infos->sprite.zbuffer[infos->ray.x] = infos->ray.perpwalldist;
 		infos->ray.x++;
 	}
-	//minimap(infos);
+	sprite(infos);
+	minimap(infos);
 	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.win, infos->mlx.img, 0, 0);
 	return (1);
 }
