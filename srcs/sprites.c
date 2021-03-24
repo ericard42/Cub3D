@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:54:46 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/24 16:33:00 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/24 16:50:33 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	drawsprite(t_infos *infos)
 	{
 		d = (y) * 256 - infos->resy * 128 + infos->sprite.spriteheight * 128;
 		texy = ((d * infos->textures[4].img_height) / infos->sprite.spriteheight) / 256;
-		my_mlx_pixel_put(infos, infos->sprite.stripe, y, infos->textures[4].addr[texy * infos->textures[4].img_width + infos->sprite.texx]);
+		if (infos->textures[4].addr[texy * infos->textures[4].img_width + infos->sprite.texx] != -16777216)
+			my_mlx_pixel_put(infos, infos->sprite.stripe, y, infos->textures[4].addr[texy * infos->textures[4].img_width + infos->sprite.texx]);
 		y++;
 	}
 }
