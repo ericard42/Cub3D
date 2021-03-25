@@ -6,7 +6,7 @@
 #    By: ericard@student.42.fr <ericard>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 14:59:01 by ericard@stu       #+#    #+#              #
-#    Updated: 2021/03/24 16:02:43 by ericard@stu      ###   ########.fr        #
+#    Updated: 2021/03/25 13:56:09 by ericard@stu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS	=	cub3d.c \
 			move.c \
 			print.c \
 			sprites.c \
-
+			save.c \
+			
 NAME	=	cub3D
 
 OBJ_DIR =	objs

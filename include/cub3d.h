@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/24 14:43:18 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/25 14:24:16 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ typedef struct	s_infos
 	int			departx;
 	int			departy;
 	char		depart;
+	int			save;
 	t_mlx		mlx;
 	t_mlx		textures[5];
 	t_ray		ray;
@@ -177,5 +178,6 @@ int			minimap(t_infos	*infos);
 void		print_columns(t_infos *infos);
 void		sprite(t_infos *infos);
 void		init_sprite(t_infos *infos);
+void		save(t_infos *infos);
 
 #endif

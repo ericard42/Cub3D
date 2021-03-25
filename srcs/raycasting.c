@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:27:13 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/24 14:22:06 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/25 15:15:43 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,9 @@ int		raycasting(t_infos *infos)
 		infos->ray.x++;
 	}
 	sprite(infos);
-	minimap(infos);
+	if (infos->save == 1)
+		save(infos);
+	//minimap(infos);
 	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.win, infos->mlx.img, 0, 0);
 	return (1);
 }

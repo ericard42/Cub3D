@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:05 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/02/24 16:14:16 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/25 13:53:41 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,29 @@ void	vrf_file(char *file, t_infos *infos)
 	}
 }
 
+int		is_save(char *str)
+{
+	if (str[0] == '-' && str[1] == '-' && str[2] == 's' && str[3] == 'a'
+		&& str[4] == 'v' && str[5] == 'e' && str[6] == '\0')
+		return (1);
+	else
+		return (0);
+}
+
 int		main(int ac, char **av)
 {
 	t_infos	infos;
 
 	infos_init(&infos);
-	if (ac == 2)
+	if (ac == 2 || (ac == 3 && is_save(av[2]) == 1))
+	{
+		if (ac == 3)
+			infos.save = 1;
 		vrf_file(av[1], &infos);
+	}
 	else
 	{
-		printf("Error\nErreur de fichier\n");
+		printf("Error\nArguments invalides\n");
 		exit(0);
 	}
 }

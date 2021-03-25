@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/24 15:29:48 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/25 13:54:23 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	infos_init(t_infos *infos)
 	infos->depart = '0';
 	infos->departx = 0;
 	infos->departy = 0;
+	infos->save = 0;
 }
 
 void	struct_mlx_init(t_infos *infos)
