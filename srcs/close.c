@@ -6,13 +6,13 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:11:22 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/24 14:57:51 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/25 16:41:45 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_close(t_infos *infos)
+void		ft_close(t_infos *infos)
 {
 	int	i;
 
@@ -47,5 +47,4 @@ int		ft_close(t_infos *infos)
 	if (infos->spos != NULL)
 		free(infos->spos);
 	exit(0);
-	return(1);
 }

@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:59:51 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/25 14:24:16 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/25 16:12:01 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ void		map_parse(t_infos *infos, char *file);
 void		map_is_valid(t_infos *infos);
 void		textures(t_infos *infos, char *str);
 int			verify_map(char *str);
-int			ft_close(t_infos *infos);
+void		ft_close(t_infos *infos);
 void		mlx_start(t_infos *infos);
 void		struct_mlx_init(t_infos *infos);
 int			key_press(int keycode, t_infos *infos);
