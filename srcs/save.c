@@ -6,7 +6,7 @@
 /*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 13:54:42 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/25 15:26:49 by ericard@stu      ###   ########.fr       */
+/*   Updated: 2021/03/25 15:31:15 by ericard@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	save(t_infos *infos)
 		x = 0;
 		while (x < infos->resx)
 		{
-			write(fd, &infos->mlx.addr[y * infos->mlx.img_width + x], 4);
+			write(fd, &infos->mlx.addr[y * infos->mlx.line_length / 4 + x], 4);
 			x++;
 		}
 		y--;
