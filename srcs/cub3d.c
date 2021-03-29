@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:46:47 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 15:47:00 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/29 16:04:28 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	vrf_file(char *file, t_infos *infos)
 	int i;
 
 	i = 0;
-	while(file[i] == '.' && (file[i + 1] == '/' || file[i + 1] == '.'))
-				i++;
+	while (file[i] == '.' && (file[i + 1] == '/' || file[i + 1] == '.'))
+		i++;
 	while (file[i] != '.')
+	{
+		if (file[i] == '\0')
 		{
-			if (file[i] == '\0')
-			{
-				printf("Error\nErreur de fichier\n");
-				exit(0);
-			}
-			i++;
+			printf("Error\nErreur de fichier\n");
+			exit(0);
 		}
+		i++;
+	}
 	if (file[i + 1] == 'c' && file[i + 2] == 'u' && file[i + 3] == 'b'
 		&& file[i + 4] == '\0')
 		parsing(file, infos);

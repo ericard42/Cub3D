@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:47:33 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 15:47:35 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/29 16:21:52 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int		key_press(int keycode, t_infos *infos)
 	if (keycode == KEY_D)
 		key_a_d(infos, 'd');
 	if (keycode == KEY_RIGHT)
-		key_left_right(infos, 'r');
+		key_right(infos);
 	if (keycode == KEY_LEFT)
-		key_left_right(infos, 'l');
+		key_left(infos);
 	return (1);
 }

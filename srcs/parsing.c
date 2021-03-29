@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:55 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 15:48:56 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/29 16:54:27 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		valid_parameter(char *str, t_infos *infos)
 {
-	if (str[0] == 'R' || str[0] == 'F' || str[0] == 'C' || (str[0] == 'S' 
+	if (str[0] == 'R' || str[0] == 'F' || str[0] == 'C' || (str[0] == 'S'
 		&& str[1] == ' ') || (str[0] == 'N' && str[1] == 'O') || (str[0] == 'S'
 		&& str[1] == 'O') || (str[0] == 'W' && str[1] == 'E') || (str[0] == 'E'
 		&& str[1] == 'A') || !str[0])
@@ -31,23 +31,23 @@ int		valid_parameter(char *str, t_infos *infos)
 
 void	parsing(char *file, t_infos *infos)
 {
-	int         fd;
-    char        *str;
-    int         ret;
+	int		fd;
+	char	*str;
+	int		ret;
 
-    ret = 1;
-    fd = open(file, O_RDONLY);
+	ret = 1;
+	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		errors("Impossible d'ouvrir le fichier", infos);
-    while (ret == 1)
-    {
-        ret = get_next_line(fd, &str);
+	while (ret == 1)
+	{
+		ret = get_next_line(fd, &str);
 		valid_parameter(str, infos);
-        resolution(infos, str);
+		resolution(infos, str);
 		colors(infos, str);
 		textures(infos, str);
 		size_map(infos, str);
-        free(str);
+		free(str);
 	}
 	close(fd);
 	map_parse(infos, file);

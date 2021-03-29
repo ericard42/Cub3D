@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:34 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 15:48:36 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/29 16:52:13 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		textlen(char *str, int i)
 	int j;
 
 	j = 0;
-	while(str[i] == ' ' || str[i] == '\t')
+	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	while (str[i] != '\0')
 	{
@@ -33,17 +33,18 @@ int		verify_text(char *texture)
 	int		i;
 
 	i = 0;
-	while(texture[i] == '.' && (texture[i + 1] == '/' || texture[i + 1] == '.'))
-				i++;
+	while (texture[i] == '.' && (texture[i + 1] == '/'
+		|| texture[i + 1] == '.'))
+		i++;
 	while (texture[i] != '.')
-		{
-			if (texture[i] == '\0')
-				return (0);
-			i++;
-		}
+	{
+		if (texture[i] == '\0')
+			return (0);
+		i++;
+	}
 	if (texture[i + 1] == 'x' && texture[i + 2] == 'p' && texture[i + 3] == 'm'
 		&& texture[i + 4] == '\0')
-	{	
+	{
 		fd = open(texture, O_RDONLY);
 		if (fd == -1)
 			return (0);
@@ -57,18 +58,16 @@ char	*pars_text(char *str, int i, t_infos *infos)
 {
 	int		j;
 	char	*texture;
-	int		len;
 
 	j = 0;
-	len = textlen(str, i);
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
-	if (!(texture = (char*)(malloc(sizeof(char) * (len + 1)))))
+	if (!(texture = (char*)(malloc(sizeof(char) * (textlen(str, i) + 1)))))
 	{
 		free(str);
 		errors("Probleme de malloc", infos);
 	}
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		texture[j] = str[i];
 		i++;
@@ -83,51 +82,40 @@ char	*pars_text(char *str, int i, t_infos *infos)
 	return (texture);
 }
 
+void	double_textures(t_infos *infos, char *str, char *tex)
+{
+	if (tex != NULL)
+	{
+		free(str);
+		errors("Parametres en double", infos);
+	}
+}
+
 void	textures(t_infos *infos, char *str)
 {
-	if(str[0] == 'S' && str[1] != 'O')
+	if (str[0] == 'S' && str[1] != 'O')
 	{
-		if (infos->s != NULL)
-		{
-			free(str);
-			errors("Parametres en double", infos);
-		}
+		double_textures(infos, str, infos->s);
 		infos->s = pars_text(str, 1, infos);
 	}
-	if(str[0] == 'N' && str[1] == 'O')
+	if (str[0] == 'N' && str[1] == 'O')
 	{
-		if (infos->no != NULL)
-		{
-			free(str);
-			errors("Parametres en double", infos);
-		}
+		double_textures(infos, str, infos->no);
 		infos->no = pars_text(str, 2, infos);
 	}
-	if(str[0] == 'S' && str[1] == 'O')
+	if (str[0] == 'S' && str[1] == 'O')
 	{
-		if (infos->so != NULL)
-		{
-			free(str);
-			errors("Parametres en double", infos);
-		}
+		double_textures(infos, str, infos->so);
 		infos->so = pars_text(str, 2, infos);
 	}
-	if(str[0] == 'W' && str[1] == 'E')
+	if (str[0] == 'W' && str[1] == 'E')
 	{
-		if (infos->we != NULL)
-		{
-			free(str);
-			errors("Parametres en double", infos);
-		}
+		double_textures(infos, str, infos->we);
 		infos->we = pars_text(str, 2, infos);
 	}
-	if(str[0] == 'E' && str[1] == 'A')
+	if (str[0] == 'E' && str[1] == 'A')
 	{
-		if (infos->ea != NULL)
-		{
-			free(str);
-			errors("Parametres en double", infos);
-		}
+		double_textures(infos, str, infos->ea);
 		infos->ea = pars_text(str, 2, infos);
 	}
 }

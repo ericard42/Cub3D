@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:50:11 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 15:50:12 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/29 16:22:24 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,8 @@ int			key_press(int keycode, t_infos *infos);
 void		my_mlx_pixel_put(t_infos *infos, int x, int y, int color);
 int			raycasting(t_infos *infos);
 void		depart_init(t_infos *infos);
-void		key_left_right(t_infos *infos, char key);
+void		key_left(t_infos *infos);
+void		key_right(t_infos *infos);
 void		key_a_d(t_infos *infos, char key);
 void		key_w_s(t_infos *infos, char key);
 int			minimap(t_infos	*infos);
