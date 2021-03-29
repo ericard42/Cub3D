@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
+/*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 18:20:56 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/25 16:14:36 by ericard@stu      ###   ########.fr       */
+/*   Created: 2021/03/29 15:49:32 by ericard           #+#    #+#             */
+/*   Updated: 2021/03/29 15:49:32 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,54 +41,8 @@ void	recup_textures(t_infos *infos)
 					&infos->textures[4].line_length, &infos->textures[4].endian);
 }
 
-int		minimap(t_infos	*infos)
-{
-	int		x;
-	int		mapx;
-	int		mapy;
-	int		i;
-	int		j;
-	int		y;
-
-	mapy = 0;
-	x = 0;
-	while (x < infos->lines)
-	{
-		i = 0;
-		while (i < 10)
-		{
-			y = 0;
-			mapx = 0;
-			while (y < infos->columns)
-			{
-				j = 0;
-				while (j < 10)
-				{
-					if ((int)infos->ray.posx == x && (int)infos->ray.posy == y)
-						my_mlx_pixel_put(infos, mapx, mapy, 0xEB1DF5);
-					else if (infos->map[x][y] == ' ' || infos->map[x][y] == '0')
-						my_mlx_pixel_put(infos, mapx, mapy, 0x000000);
-					else if (infos->map[x][y] == '1')
-						my_mlx_pixel_put(infos, mapx, mapy, 0xFFFFFF);
-					else if (infos->map[x][y] == '2')
-						my_mlx_pixel_put(infos, mapx, mapy, 0x1CD9EC);
-					j++;
-					mapx++;
-				}
-				y++;
-			}
-			i++;
-			mapy++;
-		}
-		x++;
-	}
-	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.win, infos->mlx.img, 0, 0);
-	return (1);
-}
-
 void	mlx_start(t_infos *infos)
 {
-	struct_mlx_init(infos);
 	depart_init(infos);
 	init_sprite(infos);
 	infos->mlx.mlx = mlx_init();

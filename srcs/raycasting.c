@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
+/*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 16:27:13 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/25 15:15:43 by ericard@stu      ###   ########.fr       */
+/*   Created: 2021/03/29 15:49:09 by ericard           #+#    #+#             */
+/*   Updated: 2021/03/29 15:49:10 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ int		raycasting(t_infos *infos)
 	sprite(infos);
 	if (infos->save == 1)
 		save(infos);
-	//minimap(infos);
 	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.win, infos->mlx.img, 0, 0);
 	return (1);
 }

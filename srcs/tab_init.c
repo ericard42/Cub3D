@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tab_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ericard@student.42.fr <ericard>            +#+  +:+       +#+        */
+/*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 14:39:32 by ericard@stu       #+#    #+#             */
-/*   Updated: 2021/03/25 16:41:06 by ericard@stu      ###   ########.fr       */
+/*   Created: 2021/03/29 15:49:45 by ericard           #+#    #+#             */
+/*   Updated: 2021/03/29 15:49:48 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	infos_init(t_infos *infos)
 	infos->departx = 0;
 	infos->departy = 0;
 	infos->save = 0;
+	struct_mlx_init(infos);
 }
 
 void	struct_mlx_init(t_infos *infos)
@@ -83,6 +84,10 @@ void	struct_mlx_init(t_infos *infos)
 	infos->mlx.endian = 0;
 	infos->mlx.screenx = 0;
 	infos->mlx.screeny = 0;
+	infos->sprite.spritedist = NULL;
+	infos->sprite.order = NULL;
+	infos->sprite.zbuffer = NULL;
+	infos->spos = NULL;
 }
 
 void	init_sprite(t_infos *infos)
