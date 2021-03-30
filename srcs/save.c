@@ -6,21 +6,16 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:49:16 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 15:49:17 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 13:25:24 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	save(t_infos *infos)
+void	save_two(t_infos *infos, int fd)
 {
-	int		fd;
-	int		tmp;
-	int		x;
-	int 	y;
+	int	tmp;
 
-	if ((fd = open("./save.bmp", O_RDWR | O_CREAT, S_IRWXU)) == -1)
-		errors("Impossible de creer .bmp", infos);
 	write(fd, "BM", 2);
 	tmp = 54 + 4 * infos->resx * infos->resy;
 	write(fd, &tmp, 4);
@@ -42,6 +37,17 @@ void	save(t_infos *infos)
 	write(fd, &tmp, 4);
 	write(fd, &tmp, 4);
 	write(fd, &tmp, 4);
+}
+
+void	save(t_infos *infos)
+{
+	int	fd;
+	int	x;
+	int	y;
+
+	if ((fd = open("./save.bmp", O_RDWR | O_CREAT, S_IRWXU)) == -1)
+		errors("Impossible de creer .bmp", infos);
+	save_two(infos, fd);
 	y = infos->resy;
 	while (y >= 0)
 	{

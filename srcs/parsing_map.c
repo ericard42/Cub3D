@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:18 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 16:39:40 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 13:24:39 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	map_parse_two(t_infos *infos, char *str, int j)
 		else
 			infos->map[j][i] = str[i];
 		if (infos->map[j][i] == '2')
-			infos->sprite.nbsprites++;
+			infos->sp.nbsprites++;
 		i++;
 	}
 	while (i < infos->columns)
@@ -77,14 +77,13 @@ void	map_parse_two(t_infos *infos, char *str, int j)
 void	map_parse(t_infos *infos, char *file)
 {
 	int		fd;
-	int		i;
 	int		j;
 	int		ret;
 	char	*str;
 
 	ret = 1;
 	j = 0;
-	infos->sprite.nbsprites = 0;
+	infos->sp.nbsprites = 0;
 	if (!(infos->map = (char**)malloc(sizeof(char*) * infos->lines)))
 		errors("Probleme de Malloc", infos);
 	fd = open(file, O_RDONLY);

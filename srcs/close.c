@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:46:28 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 16:03:23 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 13:24:59 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void		ft_close_two(t_infos *infos)
 {
-	if (infos->sprite.spritedist != NULL)
-		free(infos->sprite.spritedist);
-	if (infos->sprite.order != NULL)
-		free(infos->sprite.order);
-	if (infos->sprite.zbuffer != NULL)
-		free(infos->sprite.zbuffer);
+	if (infos->sp.spritedist != NULL)
+		free(infos->sp.spritedist);
+	if (infos->sp.order != NULL)
+		free(infos->sp.order);
+	if (infos->sp.zbuffer != NULL)
+		free(infos->sp.zbuffer);
 	if (infos->spos != NULL)
 		free(infos->spos);
 	exit(0);
