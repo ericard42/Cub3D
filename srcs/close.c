@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:46:28 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 17:03:27 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 17:33:35 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 
 void		ft_close_two(t_infos *infos)
 {
+	int	i;
+
+	i = 0;
+	if (infos->map != NULL)
+	{
+		while (i < infos->lines)
+		{
+			free(infos->map[i]);
+			i++;
+		}
+		free(infos->map);
+	}
 	if (infos->sp.spritedist != NULL)
 		free(infos->sp.spritedist);
 	if (infos->sp.order != NULL)
@@ -27,9 +39,6 @@ void		ft_close_two(t_infos *infos)
 
 int			ft_close(t_infos *infos)
 {
-	int	i;
-
-	i = 0;
 	if (infos->mlx.win != NULL)
 		mlx_destroy_window(infos->mlx.mlx, infos->mlx.win);
 	if (infos->no != NULL)
@@ -42,15 +51,6 @@ int			ft_close(t_infos *infos)
 		free(infos->we);
 	if (infos->s != NULL)
 		free(infos->s);
-	if (infos->map != NULL)
-	{
-		while (i < infos->lines)
-		{
-			free(infos->map[i]);
-			i++;
-		}
-		free(infos->map);
-	}
 	ft_close_two(infos);
 	return (1);
 }
