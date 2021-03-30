@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:49:45 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 14:56:48 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 17:17:03 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,12 @@ void	struct_mlx_init(t_infos *infos)
 	infos->sp.order = NULL;
 	infos->sp.zbuffer = NULL;
 	infos->spos = NULL;
+	infos->move.w = 0;
+	infos->move.a = 0;
+	infos->move.s = 0;
+	infos->move.d = 0;
+	infos->move.left = 0;
+	infos->move.right = 0;
 }
 
 void	init_sprite(t_infos *infos)

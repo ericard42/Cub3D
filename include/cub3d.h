@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:50:11 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 15:04:20 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 17:24:20 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,16 @@ typedef struct	s_texture
 	double		texpos;
 }				t_texture;
 
+typedef struct	s_moves
+{
+	int			w;
+	int			a;
+	int			s;
+	int			d;
+	int			left;
+	int			right;
+}				t_move;
+
 typedef struct	s_ray
 {
 	double		posx;
@@ -146,6 +156,7 @@ typedef struct	s_infos
 	t_texture	tex;
 	t_sprite	sp;
 	t_spritepos	*spos;
+	t_move		move;
 }				t_infos;
 
 int				get_next_line(int fd, char **line);
@@ -164,7 +175,7 @@ void			map_parse(t_infos *infos, char *file);
 void			map_is_valid(t_infos *infos);
 void			textures(t_infos *infos, char *str);
 int				verify_map(char *str);
-void			ft_close(t_infos *infos);
+int				ft_close(t_infos *infos);
 void			mlx_start(t_infos *infos);
 void			struct_mlx_init(t_infos *infos);
 int				key_press(int keycode, t_infos *infos);
@@ -180,5 +191,7 @@ void			print_columns(t_infos *infos);
 void			sprite(t_infos *infos);
 void			init_sprite(t_infos *infos);
 void			save(t_infos *infos);
+int				key_release(int keycode, t_infos *infos);
+int				key(t_infos *infos);
 
 #endif

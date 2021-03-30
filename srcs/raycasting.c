@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:49:09 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 13:20:55 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 17:24:28 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,6 @@ int		raycasting(t_infos *infos)
 		save(infos);
 	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.win,
 		infos->mlx.img, 0, 0);
+	key(infos);
 	return (1);
 }

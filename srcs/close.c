@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:46:28 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 13:24:59 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 17:03:27 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		ft_close_two(t_infos *infos)
 	exit(0);
 }
 
-void		ft_close(t_infos *infos)
+int			ft_close(t_infos *infos)
 {
 	int	i;
 
@@ -52,4 +52,5 @@ void		ft_close(t_infos *infos)
 		free(infos->map);
 	}
 	ft_close_two(infos);
+	return (1);
 }

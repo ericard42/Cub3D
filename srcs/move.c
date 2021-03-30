@@ -6,11 +6,28 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:47:56 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 15:20:24 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 17:27:20 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int		key(t_infos *infos)
+{
+	if (infos->move.w == 1)
+		key_w_s(infos, 'w');
+	if (infos->move.s == 1)
+		key_w_s(infos, 's');
+	if (infos->move.a == 1)
+		key_a_d(infos, 'a');
+	if (infos->move.d == 1)
+		key_a_d(infos, 'd');
+	if (infos->move.left == 1)
+		key_left(infos);
+	if (infos->move.right == 1)
+		key_right(infos);
+	return (1);
+}
 
 void	key_w_s(t_infos *infos, char key)
 {

@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:49:32 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 14:50:54 by ericard          ###   ########.fr       */
+/*   Updated: 2021/03/30 17:26:28 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ void	mlx_start(t_infos *infos)
 					"cub3D");
 	mlx_loop_hook(infos->mlx.mlx, raycasting, infos);
 	mlx_hook(infos->mlx.win, 2, 1L << 0, key_press, infos);
+	mlx_hook(infos->mlx.win, 33, 1L << 17, ft_close, infos);
+	mlx_hook(infos->mlx.win, 3, 1L << 1, key_release, infos);
 	mlx_loop(infos->mlx.mlx);
 }
