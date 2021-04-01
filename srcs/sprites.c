@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:49:22 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 13:26:49 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/01 15:35:24 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ void	drawsprite(t_infos *infos)
 	int	y;
 	int	d;
 	int	texy;
+	int	color;
 
-	y = infos->sp.drawstarty;
+	y = infos->sp.drawstarty + 1;
 	while (y < infos->sp.drawendy)
 	{
 		d = (y) * 256 - infos->resy * 128 + infos->sp.spriteheight * 128;
 		texy = ((d * infos->textures[4].img_height)
 			/ infos->sp.spriteheight) / 256;
-		if (infos->textures[4].addr[texy * infos->textures[4].img_width
-			+ infos->sp.texx] != -16777216)
-			my_mlx_pixel_put(infos, infos->sp.stripe, y,
-				infos->textures[4].addr[texy
-					* infos->textures[4].img_width + infos->sp.texx]);
+		color = infos->textures[4].addr[texy * infos->textures[4].img_width
+			+ infos->sp.texx];
+		if (color != -16777216)
+			my_mlx_pixel_put(infos, infos->sp.stripe, y, color);
 		y++;
 	}
 }
