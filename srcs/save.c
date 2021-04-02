@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:49:16 by ericard           #+#    #+#             */
-/*   Updated: 2021/04/01 16:18:54 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 15:46:27 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	save(t_infos *infos)
 	int	y;
 
 	if ((fd = open("./save.bmp", O_RDWR | O_CREAT, S_IRWXU)) == -1)
-		errors("Impossible de creer .bmp", infos);
+		errors("Impossible de creer le .bmp", infos);
 	save_two(infos, fd);
 	y = infos->resy;
 	while (y >= 0)

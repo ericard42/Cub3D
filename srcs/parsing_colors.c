@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:02 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 16:31:56 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 15:04:42 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	colors_f(t_infos *infos, char *str)
 	if (infos->f.value != -1)
 	{
 		free(str);
-		errors("Parametres en double", infos);
+		errors("Parametre 'F' en double", infos);
 	}
 	infos->f.r = atoi_colors(str, &i, infos);
 	colors_comma(str, &i, infos);
@@ -85,7 +85,7 @@ void	colors_c(t_infos *infos, char *str)
 	if (infos->c.value != -1)
 	{
 		free(str);
-		errors("Parametres en double", infos);
+		errors("Parametre 'C' en double", infos);
 	}
 	infos->c.r = atoi_colors(str, &i, infos);
 	colors_comma(str, &i, infos);

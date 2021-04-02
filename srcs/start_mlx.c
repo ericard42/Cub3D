@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:49:32 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 17:26:28 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 15:46:43 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	mlx_start(t_infos *infos)
 	infos->resy = (infos->resy < infos->mlx.screeny)
 		? infos->resy : infos->mlx.screeny;
 	if (!(infos->sp.zbuffer = (double *)malloc(sizeof(double) * infos->resx)))
-		errors("Soucis de malloc", infos);
+		errors("Probleme de malloc", infos);
 	recup_textures(infos);
 	infos->mlx.img = mlx_new_image(infos->mlx.mlx, infos->resx, infos->resy);
 	infos->mlx.addr = (int *)mlx_get_data_addr(infos->mlx.img,

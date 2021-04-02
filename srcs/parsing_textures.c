@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:34 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 16:52:13 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 15:48:20 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,13 @@ char	*pars_text(char *str, int i, t_infos *infos)
 	return (texture);
 }
 
-void	double_textures(t_infos *infos, char *str, char *tex)
+void	double_textures(t_infos *infos, char *str, char *tex, char *par)
 {
 	if (tex != NULL)
 	{
 		free(str);
-		errors("Parametres en double", infos);
+		printf("Error\nParametre '%s' en double\n", par);
+		ft_close(infos);
 	}
 }
 
@@ -95,27 +96,27 @@ void	textures(t_infos *infos, char *str)
 {
 	if (str[0] == 'S' && str[1] != 'O')
 	{
-		double_textures(infos, str, infos->s);
+		double_textures(infos, str, infos->s, "S");
 		infos->s = pars_text(str, 1, infos);
 	}
 	if (str[0] == 'N' && str[1] == 'O')
 	{
-		double_textures(infos, str, infos->no);
+		double_textures(infos, str, infos->no, "NO");
 		infos->no = pars_text(str, 2, infos);
 	}
 	if (str[0] == 'S' && str[1] == 'O')
 	{
-		double_textures(infos, str, infos->so);
+		double_textures(infos, str, infos->so, "SO");
 		infos->so = pars_text(str, 2, infos);
 	}
 	if (str[0] == 'W' && str[1] == 'E')
 	{
-		double_textures(infos, str, infos->we);
+		double_textures(infos, str, infos->we, "WE");
 		infos->we = pars_text(str, 2, infos);
 	}
 	if (str[0] == 'E' && str[1] == 'A')
 	{
-		double_textures(infos, str, infos->ea);
+		double_textures(infos, str, infos->ea, "EA");
 		infos->ea = pars_text(str, 2, infos);
 	}
 }

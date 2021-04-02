@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:47:39 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 16:08:42 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 15:00:18 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	map_is_valid_two(t_infos *infos, int i, int j)
 	{
 		if (infos->map[i][j - 1] != '0' && infos->map[i][j - 1] != '2'
 			&& infos->map[i][j - 1] != '1')
-			errors("Map incorrecte", infos);
+			errors("La map n'est pas entouree de murs", infos);
 		if (infos->map[i][j + 1] != '0' && infos->map[i][j + 1] != '2'
 			&& infos->map[i][j + 1] != '1')
-			errors("Map incorrecte", infos);
+			errors("La map n'est pas entouree de murs", infos);
 		if (infos->map[i - 1][j] != '0' && infos->map[i - 1][j] != '2'
 			&& infos->map[i - 1][j] != '1')
-			errors("Map incorrecte", infos);
+			errors("La map n'est pas entouree de murs", infos);
 		if (infos->map[i + 1][j] != '0' && infos->map[i + 1][j] != '2'
 			&& infos->map[i + 1][j] != '1')
-			errors("Map incorrecte", infos);
+			errors("La map n'est pas entouree de murs", infos);
 	}
 }
 
@@ -46,7 +46,7 @@ void	map_is_valid(t_infos *infos)
 		{
 			if ((i == 0 || i == infos->lines - 1) && (infos->map[i][j] != ' '
 				&& infos->map[i][j] != '1' && infos->map[i][j] != '\t'))
-				errors("Map incorrecte", infos);
+				errors("La map n'est pas entouree de murs", infos);
 			else
 				map_is_valid_two(infos, i, j);
 			j++;

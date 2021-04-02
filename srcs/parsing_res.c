@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:26 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 16:41:07 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 15:33:52 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	resolution(t_infos *infos, char *str)
 		if (infos->resx != 0 && infos->resy != 0)
 		{
 			free(str);
-			errors("Parametres en double", infos);
+			errors("Parametre 'R' en double", infos);
 		}
 		i++;
 		infos->resx = atoi_res(str, &i, infos);
 		infos->resy = atoi_res(str, &i, infos);
-		if (str[i] != '\0')
+		if (str[i] != '\0' || infos->resx == 0 || infos->resy == 0)
 		{
 			free(str);
 			errors("Resolution incorrecte", infos);

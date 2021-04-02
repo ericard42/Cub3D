@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:18 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 13:24:39 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 15:06:36 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	map_parse_depart(t_infos *infos, char *str, int i, int j)
 	if (infos->depart != '0')
 	{
 		free(str);
-		errors("Map incorrecte", infos);
+		errors("Point de depart en double", infos);
 	}
 	infos->departx = j;
 	infos->departy = i;

@@ -1,7 +1,8 @@
-R 2550 1440
+R 2550 1234
 NO ./textures/Biblio.xpm
 
 SO ./textures/Fenetre.xpm
+
 
 WE ./textures/Pendule.xpm
 

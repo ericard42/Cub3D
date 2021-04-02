@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:55 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/29 16:54:27 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 14:49:16 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		valid_parameter(char *str, t_infos *infos)
 	else
 	{
 		free(str);
-		errors("Parametre inexistant", infos);
+		errors("Un parametre dans le .cub est inconnu", infos);
 	}
 	return (0);
 }
@@ -38,10 +38,11 @@ void	parsing(char *file, t_infos *infos)
 	ret = 1;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		errors("Impossible d'ouvrir le fichier", infos);
+		errors("Impossible d'ouvrir le fichier .cub", infos);
 	while (ret == 1)
 	{
-		ret = get_next_line(fd, &str);
+		if((ret = get_next_line(fd, &str)) == -1)
+			errors("Erreur lors de la lecture du fichier", infos);
 		valid_parameter(str, infos);
 		resolution(infos, str);
 		colors(infos, str);

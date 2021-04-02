@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:46:47 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 17:30:26 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 14:40:27 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	vrf_file(char *file, t_infos *infos)
 	{
 		if (file[i] == '\0')
 		{
-			printf("Error\nErreur de fichier\n");
+			printf("Error\nLe fichier est incorrect\n");
 			exit(0);
 		}
 		i++;
@@ -33,7 +33,7 @@ void	vrf_file(char *file, t_infos *infos)
 		parsing(file, infos);
 	else
 	{
-		printf("Error\nErreur de fichier\n");
+		printf("Error\nLe fichier est incorrect\n");
 		exit(0);
 	}
 }
