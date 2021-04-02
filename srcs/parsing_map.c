@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:18 by ericard           #+#    #+#             */
-/*   Updated: 2021/04/02 15:06:36 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/02 16:29:58 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,19 @@ void	map_parse(t_infos *infos, char *file)
 int		size_map(t_infos *infos, char *str)
 {
 	int	i;
+	static int j = 0;
 
 	i = verify_map(str);
 	if (i == 0)
 	{
-		if (infos->lines != 0)
+		if (infos->lines != 0 && j == 1)
 		{
 			free(str);
 			errors("Probleme de map", infos);
 		}
-		else
-			return (0);
+		else if (infos->lines != 0)
+			j = 1;
+		return (0);
 	}
 	if (infos->resx == 0 || infos->resy == 0 || infos->f.value == -1
 		|| infos->c.value == -1 || infos->s == NULL || infos->no == NULL
