@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:50:11 by ericard           #+#    #+#             */
-/*   Updated: 2021/03/30 17:24:20 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/05 12:28:05 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ typedef struct	s_infos
 	int			departy;
 	char		depart;
 	int			save;
+	int			inmap;
 	t_mlx		mlx;
 	t_mlx		textures[5];
 	t_ray		ray;

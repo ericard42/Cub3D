@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:55 by ericard           #+#    #+#             */
-/*   Updated: 2021/04/02 14:49:16 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/05 12:24:15 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	parsing(char *file, t_infos *infos)
 		errors("Impossible d'ouvrir le fichier .cub", infos);
 	while (ret == 1)
 	{
-		if((ret = get_next_line(fd, &str)) == -1)
+		if ((ret = get_next_line(fd, &str)) == -1)
 			errors("Erreur lors de la lecture du fichier", infos);
 		valid_parameter(str, infos);
 		resolution(infos, str);

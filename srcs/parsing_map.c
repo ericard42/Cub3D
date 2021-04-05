@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:48:18 by ericard           #+#    #+#             */
-/*   Updated: 2021/04/02 16:29:58 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/05 15:17:54 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		verify_map(char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i] != '1')
@@ -51,7 +51,7 @@ void	map_parse_depart(t_infos *infos, char *str, int i, int j)
 
 void	map_parse_two(t_infos *infos, char *str, int j)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!(infos->map[j] = (char*)malloc(sizeof(char) * (infos->columns + 1))))
@@ -102,19 +102,18 @@ void	map_parse(t_infos *infos, char *file)
 
 int		size_map(t_infos *infos, char *str)
 {
-	int	i;
-	static int j = 0;
+	int		i;
 
 	i = verify_map(str);
 	if (i == 0)
 	{
-		if (infos->lines != 0 && j == 1)
+		if (infos->lines != 0 && infos->inmap == 1)
 		{
 			free(str);
 			errors("Probleme de map", infos);
 		}
 		else if (infos->lines != 0)
-			j = 1;
+			infos->inmap = 1;
 		return (0);
 	}
 	if (infos->resx == 0 || infos->resy == 0 || infos->f.value == -1
