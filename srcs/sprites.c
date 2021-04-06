@@ -6,7 +6,7 @@
 /*   By: ericard <ericard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 15:49:22 by ericard           #+#    #+#             */
-/*   Updated: 2021/04/01 15:35:24 by ericard          ###   ########.fr       */
+/*   Updated: 2021/04/06 14:36:40 by ericard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	drawsprite(t_infos *infos)
 	y = infos->sp.drawstarty + 1;
 	while (y < infos->sp.drawendy)
 	{
-		d = (y) * 256 - infos->resy * 128 + infos->sp.spriteheight * 128;
-		texy = ((d * infos->textures[4].img_height)
-			/ infos->sp.spriteheight) / 256;
+		d = y * 256 - infos->resy * 128 + infos->sp.spriteheight * 128;
+		texy = abs(((d * infos->textures[4].img_height)
+			/ infos->sp.spriteheight) / 256);
 		color = infos->textures[4].addr[texy * infos->textures[4].img_width
 			+ infos->sp.texx];
 		if (color != -16777216)
@@ -115,9 +115,9 @@ void	sprite(t_infos *infos)
 		infos->sp.stripe = infos->sp.drawstartx;
 		while (infos->sp.stripe < infos->sp.drawendx)
 		{
-			infos->sp.texx = (int)(256 * (infos->sp.stripe
+			infos->sp.texx = (int)abs((256 * (infos->sp.stripe
 				- (-infos->sp.spritewidth / 2 + infos->sp.spritescreenx))
-				* infos->textures[4].img_width / infos->sp.spritewidth) / 256;
+				* infos->textures[4].img_width / infos->sp.spritewidth) / 256);
 			if (infos->sp.transformy > 0 && infos->sp.stripe > 0
 				&& infos->sp.stripe < infos->resx
 				&& infos->sp.transformy < infos->sp.zbuffer[infos->sp.stripe])

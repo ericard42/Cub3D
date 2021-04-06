@@ -4,7 +4,7 @@ SO ./textures/Fenetre.xpm
 WE ./textures/Pendule.xpm
 EA ./textures/Tele.xpm
 
-S ./textures/eevee.xpm
+S ./textures/panda.xpm
 F 0 ,0 ,0
 C 255,255,255
 
