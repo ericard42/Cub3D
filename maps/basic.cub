@@ -1,11 +1,11 @@
 R     500   800
-NO                ./textures/north.xpm
+NO                ./textures/Biblio.xpm
 
-SO        ./textures/south.xpm
+SO        ./textures/Fenetre.xpm
 
-WE    ./textures/west.xpm
+WE    ./textures/Pendule.xpm
 
-EA         ./textures/east.xpm
+EA         ./textures/Tele.xpm
 
 S  ./textures/eevee.xpm
 
